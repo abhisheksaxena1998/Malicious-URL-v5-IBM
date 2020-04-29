@@ -1,0 +1,8 @@
+applications:
+  - path: .
+    name: cf-demo-project-python
+    environment_json: {}
+    memory: 256M
+    instances: 1
+    disk_quota: 1024M
+    services: []
