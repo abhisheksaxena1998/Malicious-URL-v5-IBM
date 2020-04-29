@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block title %}Result Page{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="margin: 1rem auto 0 auto;">
+            {% if mal %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Legitimate Url</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12" style="margin: 1rem auto 5rem auto;">
+                        <!-- Card -->
+                        <div class="card">
+
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                <img class="card-img-top" src="/static/safe.jpg" alt="Card image cap">
+                                <a href="#!">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body card-text">
+                                <!-- Text -->
+                                <ul class="list-group">
+                                    <li class="list-group-item">Link : {{text}}</li>
+                                    <li class="list-group-item">Name : {{name}}</li>
+                                    <li class="list-group-item">Organisation : {{org}}</li>
+                                    <li class="list-group-item">Add : {{add}}</li>
+                                    <li class="list-group-item">City : {{city}}</li>
+                                    <li class="list-group-item">State : {{state}}</li>
+                                    <li class="list-group-item">Ziip : {{ziip}}</li>
+                                    <li class="list-group-item">Country : {{country}}</li>
+                                    <li class="list-group-item">Email : {{emails}}</li>
+                                    <li class="list-group-item">Dom : {{dom}}</li>
+                                    <li class="list-group-item">Alexa Index Rank : {{rank}}</li>
+                                    <li class="list-group-item">Registrar : {{registrar}}</li>
+                                    <li class="list-group-item">Found : {{var13}}</li>
+                                    <li class="list-group-item">Found : {{varab}}</li>
+                                    <li class="list-group-item">Found : {{var11}}</li>
+                                    <li class="list-group-item">Found : {{var10}}</li>
+                                    <li class="list-group-item">Found : {{var5}}</li>
+                                    <li class="list-group-item">Found : {{var4}}</li>
+                                    <li class="list-group-item">Found : {{var3}}</li>
+                                  </ul>
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+                    </div>
+                </div>
+
+                
+                {% else %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Malicious Url</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12" style="margin: 1rem auto 5rem auto;">
+                            <!-- Card -->
+                            <div class="card">
+
+                                <!-- Card image -->
+                                <div class="view overlay">
+                                    <img class="card-img-top" src="/static/fake.jpg" alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+                                <!-- Card content -->
+                                <div class="card-body">
+                                    <!-- Text -->
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Link : {{text}}</li>
+                                        <li class="list-group-item">Name : {{name}}</li>
+                                        <li class="list-group-item">Organisation : {{org}}</li>
+                                        <li class="list-group-item">Add : {{add}}</li>
+                                        <li class="list-group-item">City : {{city}}</li>
+                                        <li class="list-group-item">State : {{state}}</li>
+                                        <li class="list-group-item">Ziip : {{ziip}}</li>
+                                        <li class="list-group-item">Country : {{country}}</li>
+                                        <li class="list-group-item">Email : {{emails}}</li>
+                                        <li class="list-group-item">Dom : {{dom}}</li>
+                                        <li class="list-group-item">Alexa Index Rank : {{rank}}</li>
+                                        <li class="list-group-item">Status alexa index : {{var13}}</li>
+                                        <li class="list-group-item">Status abnormal url : {{varab}}</li>
+                                        <li class="list-group-item">Status Domain age : {{var11}}</li>
+                                        <li class="list-group-item">Status Redirects : {{var10}}</li>
+                                        <li class="list-group-item">Status Prefix suffix : {{var5}}</li>
+                                        <li class="list-group-item">Status '@' : {{var3}}</li>
+    
+                                      </ul>
+                                </div>
+
+                            </div>
+                            <!-- Card -->
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
