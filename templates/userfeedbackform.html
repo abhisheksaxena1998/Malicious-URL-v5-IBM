@@ -16,8 +16,10 @@
     {% endif %}
     <div class="row">
         <div class="col-md-6" style="margin: 0 auto;">
-            <form method="GET" action="/saveuserfeedbackform" autocomplete="off" class="text-center border border-light p-5" style="margin-top: 1rem;">
-                <h1 class="display-6" style="margin: 0 auto;text-align: center;">User FeedBack Form</h1>
+            <form method="GET" action="/saveuserfeedbackform" autocomplete="off" class="text-center border border-light p-5" style="margin-top: 4rem;
+            background: ghostwhite;">
+                <h1 class="display-6" style="margin: 0 auto;text-align: center;">FeedBack Form</h1>
+        </br>
                 <div class="container">
                     <input type="hidden" name="objid" class="md-text form-control" id="objid" value="{{objid}}" disabled>
                 </div>
@@ -29,7 +31,9 @@
                     <label for="userdescription">Subject Description</label>
                     <textarea class="md-textarea form-control" id="userdescription" rows="3" name="userdescription"></textarea>
                 </div>
+            </br>
                 <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Submit</button>
+                </br>
             </form>
         </div>
     </div>
