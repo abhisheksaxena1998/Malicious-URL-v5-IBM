@@ -68,7 +68,7 @@ def result(request):
         text=request.GET['url']
         if not text.startswith('http'):
             return render(request,"404.html")
-        if text.startswith('https://malicious-url-detectorv5.herokuapp.com/')  :
+        if text.startswith('https://malicious-url-detectorv5.herokuapp.com/') or text.startswith('https://mudv7.eu-gb.cf.appdomain.cloud/')  :
             return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"The Legions",
                         'org':"The Legions",
                         'add':"New Delhi",
@@ -77,6 +77,16 @@ def result(request):
                         'ziip':"201301",
                         'country':"India",'emails':"thelegions@gmail.com",
                         'dom':"Hidden For Privacy",'rank':"Hidden For Privacy","tags":"Hidden For Privacy","registrar":"Hidden For Privacy","var13":"NA","varab":"NA","var11":"NA","var10":"NA","var5":"NA","var4":"NA","var3":"NA"})
+
+        elif text.startswith('https://www.youtube.com/results?'):
+                        return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"NA for youtube search results",
+                                'org':"NA for youtube search results",
+                                'add':"NA for youtube search results",
+                                'city':"NA for youtube search results",
+                                'state':"NA for youtube search results",
+                                'ziip':"NA for youtube search results",
+                                'country':"NA for youtube search results",'emails':"NA for youtube search results",
+                                'dom':"NA for youtube search results",'rank':"NA for youtube search results","tags":"NA for youtube search results","registrar":"NA for youtube search results","var13":"NA for youtube search results","varab":"NA for youtube search results","var11":"NA for youtube search results","var10":"NA for youtube search results","var5":"NA for youtube search results","var4":"NA for youtube search results","var3":"NA for youtube search results"})
 
 
         elif text.startswith('https://www.google.com/search?q='):
@@ -434,7 +444,28 @@ def api(request):
             }
             response = JsonResponse(mydict)
             return response  
+            
 
+        
+        elif text.startswith('https://mudv7.eu-gb.cf.appdomain.cloud/'):
+            import datetime
+            mydict = {
+                "query" : text,
+                "malware" : False,
+                "datetime" : str(datetime.datetime.now())
+            }
+            response = JsonResponse(mydict)
+            return response
+
+        elif text.startswith('https://www.youtube.com/results?'):
+            import datetime
+            mydict = {
+                "query" : text,
+                "malware" : False,
+                "datetime" : str(datetime.datetime.now())
+            }
+            response = JsonResponse(mydict)
+            return response
 
         elif text.startswith('https://www.youtube.com/'):
             import datetime
