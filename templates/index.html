@@ -105,13 +105,14 @@ background-attachment: fixed;">
                     <!--Mask with wave-->
                     <div class="view overlay">
                         <img src="/static/1.png" class="img-fluid" alt="Sample image with waves effect." style="margin: 0 auto;
-            margin-top: 1rem;height: 20rem;animation: linear;">
+            margin-top: 2px;height: 20rem;animation: linear;">
                     
                     </div>
                 </div>
             </div>
           </br>
-        </br>
+          
+        
           <div class="container">
             <input type="text" name="url" class="form-control form-control-lg" name="url" placeholder="Enter Suspected Url" style="border: groove;" required>
           </div>
@@ -133,6 +134,47 @@ background-attachment: fixed;">
       </div>
       </form>
     </div>
+
+
+
+    <form action="{%  url 'fetchanalysis'  %}" autocomplete="off">
+      <div class="container-fluid" style="margin-top: 1rem;">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Section -->
+            <section>
+    
+              <!--First row-->
+              <div class="row d-flex justify-content-center">
+      
+                <div class="col-md-12 col-lg-12 mb-4">
+    
+                  <button type="submit" class="btn btn-info btn-rounded" style="display: block;margin: 0 auto;">Fetch Live Data Analysis</button>
+    
+                </div>
+    
+              </div>
+              <!--First row-->
+    
+            </section>
+            <!-- Section -->
+          </div>
+          </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     {% endblock %}
     <div class="container-fluid">

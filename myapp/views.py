@@ -401,7 +401,7 @@ def result(request):
                 #print(city)
 
                 import csv
-                with open ('static//dataset.csv','a') as res:        
+                with open ('static//dataset.csv','a',encoding="utf-8") as res:        
                     writer=csv.writer(res)           
                     s="{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(text,te,(name),
                         org,
@@ -745,7 +745,257 @@ def api(request):
                 
 
     except:
-        return render(request,'404.html')                      
+        return render(request,'404.html')       
+
+
+
+def fetchanalysis(request):
+    import pandas as pd
+    import numpy as np
+    import datetime
+
+    df=pd.read_csv("static/dataset.csv",error_bad_lines=False)
+    l=0
+    m=0
+    for i in df['Status']:
+        if i=="Legitimate":
+            l+=1
+        elif i=="Malicious":
+            m+=1
+    unique=str(datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S") )
+
+    location1="static/"+unique+".png"
+    loc1="/static/"+unique+".png"
+    location2="static/"+unique+"2"+".png"
+    loc2="/static/"+unique+"2"+".png"
+    location3="static/"+unique+"3"+".png"
+    loc3="/static/"+unique+"3"+".png"
+    location4="static/"+unique+"4"+".png"
+    loc4="/static/"+unique+"4"+".png"
+    location5="static/"+unique+"5"+".png"
+    loc5="/static/"+unique+"5"+".png"
+    location6="static/"+unique+"6"+".png"
+    loc6="/static/"+unique+"6"+".png"
+    #print (location1,location2)
+
+    #print (loc1,location1)
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(figsize=(5, 4), dpi=100,subplot_kw=dict(aspect="equal"))
+
+    labels=['Legitimate','Malicious']
+
+    sizes=[l,m]
+
+    colors = ['#00ff00','yellow']
+    explode = (0, 0)  # explode a slice if required
+
+    plt.pie(sizes, explode=explode, labels=labels, colors=colors,
+            autopct='%1.1f%%', shadow=True)
+            
+    #draw a circle at the center of pie to make it look like a donut
+    centre_circle = plt.Circle((0,0),0.50,color='black', fc='white',linewidth=1.25)
+    fig = plt.gcf()
+    fig.gca().add_artist(centre_circle)
+
+
+    # Set aspect ratio to be equal so that pie is drawn as a circle.
+    plt.axis('equal')
+    plt.show()
+    fig.savefig(location1, dpi=150)
+
+    from collections import Counter
+    x=[]
+    y=[]
+    for i,j in (Counter(df['Organisation']).most_common(20)):
+        x.append(i[:15])
+        y.append(j)
+    #print (x,y )
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+
+    from matplotlib.pyplot import figure
+    import matplotlib.pyplot as plt
+
+    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+
+
+    plt.bar(x, y,color='#0000ff')
+
+
+    plt.xlabel('Most occuring organisations in browsing history', fontsize=16)
+    plt.ylabel('Number of websites of corresponding organisation', fontsize=16)
+    plt.xticks(x, x, fontsize=10, rotation=90)
+    plt.title('URLs of various organisations browsed as detected from Chrome Extension',fontsize=16)
+    fig = plt.figure(1)
+
+    ax = plt.gca()
+    ax.legend(prop={'size': 40})
+    legend = plt.legend()
+    plt.show()
+
+    fig.savefig(location2, dpi=150)
+
+    from collections import Counter
+    x=[]
+    y=[]
+    for i,j in (Counter(df['Registrar']).most_common(20)):
+        x.append(i[:20])
+        y.append(j)
+    #print (x,y )
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+
+    from matplotlib.pyplot import figure
+    import matplotlib.pyplot as plt
+
+    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+
+
+    plt.bar(x, y,color='yellow',edgecolor='black')
+
+
+    plt.xlabel('Most occuring registrars in browsing history', fontsize=16)
+    plt.ylabel('Number of websites of corresponding registrar', fontsize=16)
+    plt.xticks(x, x, fontsize=10, rotation=90)
+    plt.title('URLs of various registrars browsed as detected from Chrome Extension',fontsize=16)
+    fig = plt.figure(1)
+
+    ax = plt.gca()
+    ax.legend(prop={'size': 40})
+    legend = plt.legend()
+    plt.show()
+
+    fig.savefig(location3, dpi=150)
+
+    from collections import Counter
+    x=[]
+    y=[]
+    for i,j in (Counter(df['Country']).most_common(20)):
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+            x.append(i)
+            y.append(j)
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+
+    from matplotlib.pyplot import figure
+    import matplotlib.pyplot as plt
+
+    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+
+
+    plt.bar(x, y,color='#0099ff',edgecolor='black')
+
+
+    plt.xlabel('Most occuring country in browsing history', fontsize=16)
+    plt.ylabel('Number of websites of corresponding country', fontsize=16)
+    plt.xticks(x, x, fontsize=10, rotation=90)
+    plt.title('URLs of various country browsed as detected from Chrome Extension',fontsize=16)
+    fig = plt.figure(1)
+
+    ax = plt.gca()
+    ax.legend(prop={'size': 40})
+    legend = plt.legend()
+    plt.show()
+
+    fig.savefig(location4, dpi=150)
+
+    dmf=df[df['Status']=="Malicious"]
+    from collections import Counter
+    x=[]
+    y=[]
+    for i,j in (Counter(dmf['Country']).most_common(20)):
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+            x.append(i)
+            y.append(j)
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+
+    from matplotlib.pyplot import figure
+    import matplotlib.pyplot as plt
+
+    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+
+
+    plt.bar(x, y,color='red',edgecolor='black')
+
+
+    plt.xlabel('Most occuring country in browsing history (Malicious Website)', fontsize=16)
+    plt.ylabel('Number of Malicious websites of corresponding country', fontsize=16)
+    plt.xticks(x, x, fontsize=10, rotation=90)
+    plt.title('Malicious URLs of various country browsed as detected from Chrome Extension',fontsize=16)
+    fig = plt.figure(1)
+
+    ax = plt.gca()
+    ax.legend(prop={'size': 40})
+    legend = plt.legend()
+    plt.show()
+
+    fig.savefig(location5, dpi=150)
+
+    dlf=df[df['Status']=="Legitimate"]
+    from collections import Counter
+    x=[]
+    y=[]
+    for i,j in (Counter(dlf['Country']).most_common(20)):
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+            x.append(i)
+            y.append(j)
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+
+    from matplotlib.pyplot import figure
+    import matplotlib.pyplot as plt
+
+    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+
+
+    plt.bar(x, y,color='#ccff33',edgecolor='black')
+
+
+    plt.xlabel('Most occuring country in browsing history (Legitimate Website)', fontsize=16)
+    plt.ylabel('Number of Legitimate websites of corresponding country', fontsize=16)
+    plt.xticks(x, x, fontsize=10, rotation=90)
+    plt.title('Legitimate URLs of various country browsed as detected from Chrome Extension',fontsize=16)
+    fig = plt.figure(1)
+
+    ax = plt.gca()
+    ax.legend(prop={'size': 40})
+    legend = plt.legend()
+    plt.show()
+
+    fig.savefig(location6, dpi=150)
+
+
+        
+
+
+
+
+
+
+
+    return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6})
+    
         
 
 def about(request):
@@ -801,9 +1051,9 @@ def replyform(request,replyid):
 
 def savereply(request):
     try:
-        print("debug start")
+        #print("debug start")
         replyid = request.GET['replyid']
-        print(replyid)
+        #print(replyid)
         obj = UserFeedBack.objects.get(userid=replyid)
         obj.replied = True
         obj.reply = request.GET['userreply']
@@ -812,7 +1062,7 @@ def savereply(request):
             "reply" : True,
             "users" : UserFeedBack.objects.all()
         }
-        print("debug end")
+        #print("debug end")
         return render(request,'discuss.html',context=mydict)
 
     except:

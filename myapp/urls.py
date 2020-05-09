@@ -8,6 +8,7 @@ urlpatterns = [
     path('api',views.api,name='api'),
     path('search',views.search,name="search"),
     path('result',views.result,name='result'),
+    path('fetchanalysis',views.fetchanalysis,name='fetchanalysis'),
     path('about',views.about,name='about'),
     path('geturlhistory',views.geturlhistory,name="geturlhistory"),
     path('discuss',views.discuss,name="discuss"),
