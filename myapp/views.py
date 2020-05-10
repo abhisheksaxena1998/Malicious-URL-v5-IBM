@@ -800,7 +800,6 @@ def fetchanalysis(request):
 
     # Set aspect ratio to be equal so that pie is drawn as a circle.
     plt.axis('equal')
-    plt.show()
     fig.savefig(location1, dpi=150)
 
     from collections import Counter
@@ -820,8 +819,8 @@ def fetchanalysis(request):
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
-    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-
+    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+    fig, ax = plt.subplots(figsize=(15,7))
 
     plt.bar(x, y,color='#0000ff')
 
@@ -830,12 +829,12 @@ def fetchanalysis(request):
     plt.ylabel('Number of websites of corresponding organisation', fontsize=16)
     plt.xticks(x, x, fontsize=10, rotation=90)
     plt.title('URLs of various organisations browsed as detected from Chrome Extension',fontsize=16)
-    fig = plt.figure(1)
+    #fig = plt.figure(1)
 
     ax = plt.gca()
     ax.legend(prop={'size': 40})
     legend = plt.legend()
-    plt.show()
+    #plt.show()
 
     fig.savefig(location2, dpi=150)
 
@@ -856,8 +855,8 @@ def fetchanalysis(request):
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
-    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-
+    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+    fig, ax = plt.subplots(figsize=(15,7))
 
     plt.bar(x, y,color='yellow',edgecolor='black')
 
@@ -866,12 +865,12 @@ def fetchanalysis(request):
     plt.ylabel('Number of websites of corresponding registrar', fontsize=16)
     plt.xticks(x, x, fontsize=10, rotation=90)
     plt.title('URLs of various registrars browsed as detected from Chrome Extension',fontsize=16)
-    fig = plt.figure(1)
+    #fig = plt.figure(1)
 
     ax = plt.gca()
     ax.legend(prop={'size': 40})
     legend = plt.legend()
-    plt.show()
+    #plt.show()
 
     fig.savefig(location3, dpi=150)
 
@@ -892,8 +891,8 @@ def fetchanalysis(request):
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
-    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-
+    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+    fig, ax = plt.subplots(figsize=(15,7))
 
     plt.bar(x, y,color='#0099ff',edgecolor='black')
 
@@ -902,12 +901,12 @@ def fetchanalysis(request):
     plt.ylabel('Number of websites of corresponding country', fontsize=16)
     plt.xticks(x, x, fontsize=10, rotation=90)
     plt.title('URLs of various country browsed as detected from Chrome Extension',fontsize=16)
-    fig = plt.figure(1)
+    #fig = plt.figure(1)
 
     ax = plt.gca()
     ax.legend(prop={'size': 40})
     legend = plt.legend()
-    plt.show()
+    #plt.show()
 
     fig.savefig(location4, dpi=150)
 
@@ -929,8 +928,8 @@ def fetchanalysis(request):
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
-    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-
+    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+    fig, ax = plt.subplots(figsize=(15,7))
 
     plt.bar(x, y,color='red',edgecolor='black')
 
@@ -939,12 +938,12 @@ def fetchanalysis(request):
     plt.ylabel('Number of Malicious websites of corresponding country', fontsize=16)
     plt.xticks(x, x, fontsize=10, rotation=90)
     plt.title('Malicious URLs of various country browsed as detected from Chrome Extension',fontsize=16)
-    fig = plt.figure(1)
+    #fig = plt.figure(1)
 
     ax = plt.gca()
     ax.legend(prop={'size': 40})
     legend = plt.legend()
-    plt.show()
+    #plt.show()
 
     fig.savefig(location5, dpi=150)
 
@@ -966,8 +965,8 @@ def fetchanalysis(request):
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
-    figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-
+    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+    fig, ax = plt.subplots(figsize=(15,7))
 
     plt.bar(x, y,color='#ccff33',edgecolor='black')
 
@@ -976,12 +975,12 @@ def fetchanalysis(request):
     plt.ylabel('Number of Legitimate websites of corresponding country', fontsize=16)
     plt.xticks(x, x, fontsize=10, rotation=90)
     plt.title('Legitimate URLs of various country browsed as detected from Chrome Extension',fontsize=16)
-    fig = plt.figure(1)
+    #fig = plt.figure(1)
 
     ax = plt.gca()
     ax.legend(prop={'size': 40})
     legend = plt.legend()
-    plt.show()
+    #plt.show()
 
     fig.savefig(location6, dpi=150)
 
