@@ -820,7 +820,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,7))
+    fig, ax = plt.subplots(figsize=(15,15))
 
     plt.bar(x, y,color='#0000ff')
 
@@ -856,7 +856,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,7))
+    fig, ax = plt.subplots(figsize=(15,15))
 
     plt.bar(x, y,color='yellow',edgecolor='black')
 
@@ -892,7 +892,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,7))
+    fig, ax = plt.subplots(figsize=(15,15))
 
     plt.bar(x, y,color='#0099ff',edgecolor='black')
 
@@ -929,7 +929,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,7))
+    fig, ax = plt.subplots(figsize=(15,15))
 
     plt.bar(x, y,color='red',edgecolor='black')
 
@@ -966,7 +966,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,7))
+    fig, ax = plt.subplots(figsize=(15,15))
 
     plt.bar(x, y,color='#ccff33',edgecolor='black')
 
