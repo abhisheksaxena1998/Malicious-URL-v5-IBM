@@ -997,6 +997,12 @@ def fetchanalysis(request):
 
     return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6})
     
+
+        
+
+def testresults(request):
+    #return HttpResponse("about")
+    return render(request, 'testresults.html')
         
 
 def about(request):

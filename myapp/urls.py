@@ -6,6 +6,7 @@ urlpatterns = [
     path('getuserfeedbackform',views.getuserfeedbackform,name="getuserfeedbackform"),
     path('saveuserfeedbackform',views.saveuserfeedbackform,name="saveuserfeedbackform"),
     path('api',views.api,name='api'),
+    path('testresults',views.testresults,name='testresults'),
     path('search',views.search,name="search"),
     path('result',views.result,name='result'),
     path('fetchanalysis',views.fetchanalysis,name='fetchanalysis'),
