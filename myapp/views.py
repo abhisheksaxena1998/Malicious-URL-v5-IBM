@@ -62,7 +62,7 @@ import datetime
 
 def result(request):
 
-        """try:"""
+    try:
         #nm=request.GET['url']
     
         text=request.GET['url']
@@ -426,8 +426,16 @@ def result(request):
 
         else:
             return render(request,'404.html')  
-        """except:
-        return render(request,'errorpage.html')  """        
+    except:
+        return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"NA",
+                                'org':"NA",
+                                'add':"NA",
+                                'city':"NA",
+                                'state':"NA",
+                                'ziip':"NA",
+                                'country':"NA",'emails':"NA",
+                                'dom':"NA",'rank':"NA","tags":"NA","registrar":"NA","var13":"NA","varab":"NA","var11":"NA","var10":"NA","var5":"NA","var4":"NA","var3":"NA"})
+  
 
 
 def api(request):
@@ -745,13 +753,22 @@ def api(request):
                 
 
     except:
-        return render(request,'404.html')       
+        text=request.GET['query']
+        import datetime
+        mydict = {
+            "query" : text,
+            "malware" : False,
+            "datetime" : str(datetime.datetime.now())
+        }
+        response = JsonResponse(mydict)
+        return response  
+        #return render(request,'404.html')       
 
 
 
 def fetchanalysis(request):
     import warnings
-    warnings.filterwarnings('ignore')
+    warnings.simplefilter(action='ignore', category=FutureWarning)
     import pandas as pd
     import numpy as np
     import datetime
@@ -822,11 +839,9 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,15))
+    fig, ax = plt.subplots(figsize=(15,20))
 
     plt.bar(x, y,color='#0000ff')
-
-
     plt.xlabel('Most occuring organisations in browsing history', fontsize=16)
     plt.ylabel('Number of websites of corresponding organisation', fontsize=16)
     plt.xticks(x, x, fontsize=10, rotation=90)
@@ -858,7 +873,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,15))
+    fig, ax = plt.subplots(figsize=(15,20))
 
     plt.bar(x, y,color='yellow',edgecolor='black')
 
@@ -894,7 +909,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,15))
+    fig, ax = plt.subplots(figsize=(15,20))
 
     plt.bar(x, y,color='#0099ff',edgecolor='black')
 
@@ -931,7 +946,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,15))
+    fig, ax = plt.subplots(figsize=(15,20))
 
     plt.bar(x, y,color='red',edgecolor='black')
 
@@ -968,7 +983,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,15))
+    fig, ax = plt.subplots(figsize=(15,20))
 
     plt.bar(x, y,color='#ccff33',edgecolor='black')
 
