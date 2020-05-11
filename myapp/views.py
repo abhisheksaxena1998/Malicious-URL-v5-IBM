@@ -750,6 +750,8 @@ def api(request):
 
 
 def fetchanalysis(request):
+    import warnings
+    warnings.filterwarnings('ignore')
     import pandas as pd
     import numpy as np
     import datetime

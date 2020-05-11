@@ -14,11 +14,11 @@
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
   <link rel="icon" href="{%static '46-512.png' %}" type="image/png">
-  <title>{% block title %}Malicious Url Detector{% endblock %}</title>
+  <title>{% block title %}Malicious URL Detector{% endblock %}</title>
 
 </head>
 
-<body style="background-image: url(static/wpaper.jpg);background-repeat: no-repeat;
+<body style="background-image: url(static/wpcy.jpg);background-repeat: no-repeat;
 background-position: center;
 background-attachment: fixed;">
 <div class="spinner-border" role="status" style="background-color: transparent;position: fixed;left: 49.5%;top: 50%;z-index: 99999;display: flex;color:#33ccff;">
@@ -60,19 +60,22 @@ background-attachment: fixed;">
           <a class="nav-link" href="{% url 'geturlhistory' %}">Database</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'fetchanalysis' %}">Live Data Analysis</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'getuserfeedbackform' %}">User FeedBack</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'discuss' %}">Discuss Channel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'getdataset' %}">Download Our Dataset</a>
+          <a class="nav-link" href="{% url 'getdataset' %}">Download Dataset (URL History)</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About Our App</a>
+          <a class="nav-link" href="{% url 'about' %}">About Application</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% static 'chrome-ext.zip' %}" download>Download Our Chrome Extension</a>
+          <a class="nav-link" href="{% static 'chrome-ext.zip' %}" download>Download Chrome Extension</a>
         </li>
       </ul>
       <!-- Links -->
@@ -111,6 +114,7 @@ background-attachment: fixed;">
                 </div>
             </div>
           </br>
+        </br>
           
         
           <div class="container">
@@ -137,39 +141,7 @@ background-attachment: fixed;">
 
 
 
-    <form action="{%  url 'fetchanalysis'  %}" autocomplete="off">
-      <div class="container-fluid" style="margin-top: 1rem;">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- Section -->
-            <section>
-    
-              <!--First row-->
-              <div class="row d-flex justify-content-center">
-      
-                <div class="col-md-12 col-lg-12 mb-4">
-    
-                  <button type="submit" class="btn btn-info btn-rounded" style="display: block;margin: 0 auto;">Fetch Live Data Analysis</button>
-    
-                </div>
-    
-              </div>
-              <!--First row-->
-    
-            </section>
-            <!-- Section -->
-          </div>
-          </form>
-        </div>
-
-
-
-
-
-
-
-
-
+   
 
 
 
@@ -208,7 +180,7 @@ background-attachment: fixed;">
       <script type="text/javascript">
         $(document).ready(function () {
             //Preloader
-            preloaderFadeOutTime = 2500;
+            preloaderFadeOutTime = 1900;
             function hidePreloader() {
                 var preloader1 = $('.spinner-border');
                 var preloader2 = $('#card');
