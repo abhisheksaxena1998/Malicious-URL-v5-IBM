@@ -61,11 +61,11 @@ import datetime
 
 
 def result(request):
-    text=request.GET['url']
 
     try:
         #nm=request.GET['url']
     
+        text=request.GET['url']
         if not text.startswith('http'):
             return render(request,"404.html")
         if text.startswith('https://malicious-url-detectorv5.herokuapp.com/') or text.startswith('https://mudv7.eu-gb.cf.appdomain.cloud/')  :
@@ -252,7 +252,7 @@ def result(request):
                     aburl=-1
                     var11="Domain age working less than a year"
         
-        
+     
 
 
 
@@ -839,7 +839,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,20))
+    fig, ax = plt.subplots(figsize=(15,16))
 
     plt.bar(x, y,color='#0000ff')
     plt.xlabel('Most occuring organisations in browsing history', fontsize=16)
@@ -853,7 +853,7 @@ def fetchanalysis(request):
     legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location2, dpi=150)
+    fig.savefig(location2, dpi=80)
 
     from collections import Counter
     x=[]
@@ -889,7 +889,7 @@ def fetchanalysis(request):
     legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location3, dpi=150)
+    fig.savefig(location3, dpi=80)
 
     from collections import Counter
     x=[]
@@ -909,7 +909,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,20))
+    fig, ax = plt.subplots(figsize=(15,16))
 
     plt.bar(x, y,color='#0099ff',edgecolor='black')
 
@@ -925,7 +925,7 @@ def fetchanalysis(request):
     legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location4, dpi=150)
+    fig.savefig(location4, dpi=80)
 
     dmf=df[df['Status']=="Malicious"]
     from collections import Counter
@@ -946,7 +946,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,20))
+    fig, ax = plt.subplots(figsize=(15,16))
 
     plt.bar(x, y,color='red',edgecolor='black')
 
@@ -962,7 +962,7 @@ def fetchanalysis(request):
     legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location5, dpi=150)
+    fig.savefig(location5, dpi=80)
 
     dlf=df[df['Status']=="Legitimate"]
     from collections import Counter
@@ -983,7 +983,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,20))
+    fig, ax = plt.subplots(figsize=(15,16))
 
     plt.bar(x, y,color='#ccff33',edgecolor='black')
 
@@ -999,7 +999,7 @@ def fetchanalysis(request):
     legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location6, dpi=150)
+    fig.savefig(location6, dpi=80)
 
 
         
