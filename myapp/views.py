@@ -61,11 +61,11 @@ import datetime
 
 
 def result(request):
-
+    text=request.GET['url']
     try:
         #nm=request.GET['url']
     
-        text=request.GET['url']
+        
         if not text.startswith('http'):
             return render(request,"404.html")
         if text.startswith('https://malicious-url-detectorv5.herokuapp.com/') or text.startswith('https://mudv7.eu-gb.cf.appdomain.cloud/')  :
