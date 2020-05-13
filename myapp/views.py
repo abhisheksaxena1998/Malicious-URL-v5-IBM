@@ -214,16 +214,16 @@ def result(request):
                 except:
                     print("getaddrerrror DNE")
                     d=0
-                    name="Not found in database"
-                    org="Not found in database"
-                    add="Not found in database"
-                    city="Not found in database"
-                    state="Not found in database"
-                    ziip="Not found in database"
-                    country="Not found in database"
-                    emails="Not found in database"
-                    dom="Not Found"
-                    registrar="Not Found"
+                    name="Not found in WHOIS database"
+                    org="Not found in WHOIS database"
+                    add="Not found in WHOIS database"
+                    city="Not found in WHOIS database"
+                    state="Not found in WHOIS database"
+                    ziip="Not found in WHOIS database"
+                    country="Not found in WHOIS database"
+                    emails="Not found in WHOIS database"
+                    dom="Not Found in WHOIS database"
+                    registrar="Not Found in WHOIS database"
                 if d!=0:    
                     try:
                         if len(res.creation_date)>1:
@@ -562,7 +562,7 @@ def api(request):
                 try:
                     res=whois.whois(url)
                 except:
-                    print("getaddrerrror DNE")
+                    #print("getaddrerrror DNE")
                     d=0
                     name="Not found in database"
                     org="Not found in database"
