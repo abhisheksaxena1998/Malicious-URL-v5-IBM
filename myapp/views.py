@@ -60,7 +60,7 @@ import datetime
 
 
 def result(request):
-    text=request.GET['url']
+    text=(request.GET['url']).lower()
     try:
         #nm=request.GET['url']
     
@@ -438,8 +438,9 @@ def result(request):
 
 
 def api(request):
+    text=(request.GET['query']).lower()
     try:
-        text=request.GET['query']
+        
         import datetime
 
         if text.startswith('https://malicious-url-detectorv5.herokuapp.com/'): 
