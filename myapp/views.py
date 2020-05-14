@@ -773,7 +773,7 @@ def fetchanalysis(request):
     import numpy as np
     import datetime
 
-    df=pd.read_csv("static/dataset.csv",error_bad_lines=False)
+    df=pd.read_csv("static/dataset.csv",error_bad_lines=False,warn_bad_lines=False)
     l=0
     m=0
     for i in df['Status']:
@@ -799,7 +799,7 @@ def fetchanalysis(request):
 
     #print (loc1,location1)
     import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(5, 4), dpi=100,subplot_kw=dict(aspect="equal"))
+    fig, ax = plt.subplots(figsize=(5, 4), dpi=10,subplot_kw=dict(aspect="equal"))
 
     labels=['Legitimate','Malicious']
 
@@ -819,14 +819,19 @@ def fetchanalysis(request):
 
     # Set aspect ratio to be equal so that pie is drawn as a circle.
     plt.axis('equal')
-    fig.savefig(location1, dpi=150)
+    fig.savefig(location1, dpi=90)
 
     from collections import Counter
     x=[]
     y=[]
-    for i,j in (Counter(df['Organisation']).most_common(20)):
-        x.append(i[:15])
-        y.append(j)
+    for i,j in (Counter(df['Organisation']).most_common(15)):
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+            x.append(i[:15])
+            y.append(j)
+
+
+        
+        
     #print (x,y )
     import pandas as pd
     import numpy as np
@@ -849,8 +854,8 @@ def fetchanalysis(request):
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    ##ax.legend(prop={'size': 40})
+    ##legend = plt.legend()
     #plt.show()
 
     fig.savefig(location2, dpi=80)
@@ -858,9 +863,11 @@ def fetchanalysis(request):
     from collections import Counter
     x=[]
     y=[]
-    for i,j in (Counter(df['Registrar']).most_common(20)):
-        x.append(i[:20])
-        y.append(j)
+    for i,j in (Counter(df['Registrar']).most_common(15)):
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+
+            x.append(i[:15])
+            y.append(j)
     #print (x,y )
     import pandas as pd
     import numpy as np
@@ -873,7 +880,7 @@ def fetchanalysis(request):
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,20))
+    fig, ax = plt.subplots(figsize=(15,16))
 
     plt.bar(x, y,color='yellow',edgecolor='black')
 
@@ -885,8 +892,8 @@ def fetchanalysis(request):
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    ##ax.legend(prop={'size': 40})
+    ##legend = plt.legend()
     #plt.show()
 
     fig.savefig(location3, dpi=80)
@@ -894,9 +901,9 @@ def fetchanalysis(request):
     from collections import Counter
     x=[]
     y=[]
-    for i,j in (Counter(df['Country']).most_common(20)):
+    for i,j in (Counter(df['Country']).most_common(15)):
         if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i)
+            x.append(i[:15])
             y.append(j)
     import pandas as pd
     import numpy as np
@@ -921,8 +928,8 @@ def fetchanalysis(request):
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    ##ax.legend(prop={'size': 40})
+    ##legend = plt.legend()
     #plt.show()
 
     fig.savefig(location4, dpi=80)
@@ -931,9 +938,9 @@ def fetchanalysis(request):
     from collections import Counter
     x=[]
     y=[]
-    for i,j in (Counter(dmf['Country']).most_common(20)):
+    for i,j in (Counter(dmf['Country']).most_common(15)):
         if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i)
+            x.append(i[:15])
             y.append(j)
     import pandas as pd
     import numpy as np
@@ -958,8 +965,8 @@ def fetchanalysis(request):
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    ##ax.legend(prop={'size': 40})
+    ##legend = plt.legend()
     #plt.show()
 
     fig.savefig(location5, dpi=80)
@@ -968,9 +975,9 @@ def fetchanalysis(request):
     from collections import Counter
     x=[]
     y=[]
-    for i,j in (Counter(dlf['Country']).most_common(20)):
+    for i,j in (Counter(dlf['Country']).most_common(15)):
         if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i)
+            x.append(i[:15])
             y.append(j)
     import pandas as pd
     import numpy as np
@@ -995,8 +1002,8 @@ def fetchanalysis(request):
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    #ax.legend(prop={'size': 40})
+    #legend = plt.legend()
     #plt.show()
 
     fig.savefig(location6, dpi=80)
