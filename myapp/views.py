@@ -826,7 +826,7 @@ def fetchanalysis(request):
 
     # Set aspect ratio to be equal so that pie is drawn as a circle.
     plt.axis('equal')
-    fig.savefig(location1, dpi=150)
+    fig.savefig(location1, dpi=100)
 
     from collections import Counter
     x=[]
