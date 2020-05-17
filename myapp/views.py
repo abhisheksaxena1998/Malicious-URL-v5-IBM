@@ -60,12 +60,12 @@ import datetime
 
 
 def result(request):
-    text=(request.GET['url']).lower()
+    text=request.GET['url'].lower()
     try:
         #nm=request.GET['url']
     
         
-        if not text.startswith('http'):
+        if not text.startswith('http://') and not text.startswith('https://'):
             return render(request,"404.html")
         if text.startswith('https://malicious-url-detectorv5.herokuapp.com/') or text.startswith('https://mudv7.eu-gb.cf.appdomain.cloud/')  :
             return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"The Legions",
@@ -134,9 +134,10 @@ def result(request):
                     secval=1  
                 if "@" in text:
                     thirdval=-1
-                    var3="@detected"
+                    var3="'@' detected"
                 else:
                     thirdval=1       
+                    var3="No '@' detected"
                 k=text.count("//")          
                 if k>1:
                     fourthval=-1
@@ -148,7 +149,8 @@ def result(request):
                     fifthval=-1
                     var5="Prefix-Suffix detected"
                 else:
-                    fifthval=1         
+                    fifthval=1 
+                    var5="No Prefix-Suffix detected"        
                 if "https" in text:
                     sixthval=1
                 else:
@@ -175,6 +177,7 @@ def result(request):
                     var10="redirects more than 2"
                 else:
                     tenthval=1    
+                    var10=f"{re-1} redirects detected"
 
                 import whois
                 from datetime import datetime
@@ -246,10 +249,11 @@ def result(request):
                 if d>365:
                     eleventhval=1
                     aburl=1
+                    var11=f"Domain age is {d} days"
                 elif d<=365:
                     eleventhval=-1
                     aburl=-1
-                    var11="Domain age working less than a year"
+                    var11=f"Domain age working less than a year, {d} days"
         
      
 
@@ -257,8 +261,10 @@ def result(request):
 
                 if aburl==-1:
                     twelthval=-1
+                    varab="Abnormal URL detected"
                 else:
                     twelthval=1 
+                    varab="Website Registered on WHOIS Database"
 
                 #print (twelthval,eleventhval,aburl,d)    
                 import urllib.request, sys, re
@@ -274,22 +280,23 @@ def result(request):
                     url = data_tojson["ALEXA"]["SD"][1]["POPULARITY"]["URL"]
                     rank= int(data_tojson["ALEXA"]["SD"][1]["POPULARITY"]["TEXT"])
                     #print ("rank",rank)
-                    if rank<=100000:
+                    if rank<=600000:
                         thirt=1
                     else:
                         thirt=-1
-                        var13="Larger index in alexa database"
+                        var13=f"Ranked {rank} in Alexa Database, Larger index in alexa database detected!!"
                     #print (thirt)    
                 except:
                     thirt=-1 
                     rank=-1
-                    var13="Larger index in alexa database"
+                    ##############var13="Larger index in alexa database"
+                    var13="Not indexed in alexa database"
                     #print (rank)                  
 
 
 
 
-                filename = 'phish_trainedv3.sav'
+                filename = 'phish_trainedv7mud0.001.sav'
 
                 loaded_model = joblib.load(filename)
 
@@ -438,7 +445,7 @@ def result(request):
 
 
 def api(request):
-    text=(request.GET['query']).lower()
+    text=request.GET['query'].lower()
     try:
         
         import datetime
@@ -622,7 +629,7 @@ def api(request):
                     url = data_tojson["ALEXA"]["SD"][1]["POPULARITY"]["URL"]
                     rank= int(data_tojson["ALEXA"]["SD"][1]["POPULARITY"]["TEXT"])
                     #print ("rank",rank)
-                    if rank<=100000:
+                    if rank<=600000:
                         thirt=1
                     else:
                         thirt=-1
@@ -635,7 +642,7 @@ def api(request):
 
 
 
-                filename = 'phish_trainedv3.sav'
+                filename = 'phish_trainedv7mud0.001.sav'
 
                 loaded_model = joblib.load(filename)
 
@@ -773,7 +780,7 @@ def fetchanalysis(request):
     import numpy as np
     import datetime
 
-    df=pd.read_csv("static/dataset.csv",error_bad_lines=False)
+    df=pd.read_csv("static/dataset.csv",error_bad_lines=False,warn_bad_lines=False)
     l=0
     m=0
     for i in df['Status']:
@@ -825,71 +832,75 @@ def fetchanalysis(request):
     x=[]
     y=[]
     for i,j in (Counter(df['Organisation']).most_common(20)):
-        x.append(i[:15])
-        y.append(j)
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+            x.append(i[:15])
+            y.append(j)
     #print (x,y )
     import pandas as pd
     import numpy as np
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+    sns.set_style("whitegrid", {"axes.facecolor": ".2"})
 
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,16))
+    fig, ax = plt.subplots(figsize=(20,20), facecolor='w', edgecolor='k')
 
     plt.bar(x, y,color='#0000ff')
-    plt.xlabel('Most occuring organisations in browsing history', fontsize=16)
-    plt.ylabel('Number of websites of corresponding organisation', fontsize=16)
-    plt.xticks(x, x, fontsize=10, rotation=90)
-    plt.title('URLs of various organisations browsed as detected from Chrome Extension',fontsize=16)
+    plt.xlabel('Most occuring organisations in browsing history', fontsize=32)
+    plt.ylabel('Number of websites of corresponding organisation', fontsize=32)
+    plt.xticks(x, x, fontsize=28, rotation=90)
+    plt.yticks(fontsize=28)
+    plt.title('URLs of various organisations browsed as detected from Chrome Extension',fontsize=32)
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    #ax.legend(prop={'size': 40})
+    #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location2, dpi=80)
+    fig.savefig(location2, dpi=150,bbox_inches='tight')
 
     from collections import Counter
     x=[]
     y=[]
     for i,j in (Counter(df['Registrar']).most_common(20)):
-        x.append(i[:20])
-        y.append(j)
+        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+            x.append(i[:20])
+            y.append(j)
     #print (x,y )
     import pandas as pd
     import numpy as np
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
 
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,20))
+    fig, ax = plt.subplots(figsize=(20,20))
 
     plt.bar(x, y,color='yellow',edgecolor='black')
 
 
-    plt.xlabel('Most occuring registrars in browsing history', fontsize=16)
-    plt.ylabel('Number of websites of corresponding registrar', fontsize=16)
-    plt.xticks(x, x, fontsize=10, rotation=90)
-    plt.title('URLs of various registrars browsed as detected from Chrome Extension',fontsize=16)
+    plt.xlabel('Most occuring registrars in browsing history', fontsize=32)
+    plt.ylabel('Number of websites of corresponding registrar', fontsize=32)
+    plt.xticks(x, x, fontsize=28, rotation=90)
+    plt.yticks(fontsize=28)
+    plt.title('URLs of various registrars browsed as detected from Chrome Extension',fontsize=32)
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    #ax.legend(prop={'size': 40})
+    #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location3, dpi=80)
+    fig.savefig(location3, dpi=150,bbox_inches='tight')
 
     from collections import Counter
     x=[]
@@ -903,29 +914,30 @@ def fetchanalysis(request):
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
 
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,16))
+    fig, ax = plt.subplots(figsize=(20,20))
 
     plt.bar(x, y,color='#0099ff',edgecolor='black')
 
 
-    plt.xlabel('Most occuring country in browsing history', fontsize=16)
-    plt.ylabel('Number of websites of corresponding country', fontsize=16)
-    plt.xticks(x, x, fontsize=10, rotation=90)
-    plt.title('URLs of various country browsed as detected from Chrome Extension',fontsize=16)
+    plt.xlabel('Most occuring country in browsing history', fontsize=32)
+    plt.ylabel('Number of websites of corresponding country', fontsize=32)
+    plt.xticks(x, x, fontsize=28, rotation=90)
+    plt.yticks(fontsize=28)
+    plt.title('URLs of various country browsed as detected from Chrome Extension',fontsize=32)
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    #ax.legend(prop={'size': 40})
+    #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location4, dpi=80)
+    fig.savefig(location4, dpi=150,bbox_inches='tight')
 
     dmf=df[df['Status']=="Malicious"]
     from collections import Counter
@@ -940,29 +952,30 @@ def fetchanalysis(request):
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
 
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,16))
+    fig, ax = plt.subplots(figsize=(20,20))
 
     plt.bar(x, y,color='red',edgecolor='black')
 
 
-    plt.xlabel('Most occuring country in browsing history (Malicious Website)', fontsize=16)
-    plt.ylabel('Number of Malicious websites of corresponding country', fontsize=16)
-    plt.xticks(x, x, fontsize=10, rotation=90)
-    plt.title('Malicious URLs of various country browsed as detected from Chrome Extension',fontsize=16)
+    plt.xlabel('Most occuring country in browsing history (Malicious Website)', fontsize=32)
+    plt.ylabel('Number of Malicious websites of corresponding country', fontsize=32)
+    plt.xticks(x, x, fontsize=28, rotation=90)
+    plt.yticks(fontsize=28)
+    plt.title('Malicious URLs of various country browsed as detected from Chrome Extension',fontsize=32)
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    #ax.legend(prop={'size': 40})
+    #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location5, dpi=80)
+    fig.savefig(location5, dpi=150,bbox_inches='tight')
 
     dlf=df[df['Status']=="Legitimate"]
     from collections import Counter
@@ -977,29 +990,30 @@ def fetchanalysis(request):
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".0"})
+    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
 
     from matplotlib.pyplot import figure
     import matplotlib.pyplot as plt
 
     #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(15,16))
+    fig, ax = plt.subplots(figsize=(20,20))
 
     plt.bar(x, y,color='#ccff33',edgecolor='black')
 
 
-    plt.xlabel('Most occuring country in browsing history (Legitimate Website)', fontsize=16)
-    plt.ylabel('Number of Legitimate websites of corresponding country', fontsize=16)
-    plt.xticks(x, x, fontsize=10, rotation=90)
-    plt.title('Legitimate URLs of various country browsed as detected from Chrome Extension',fontsize=16)
+    plt.xlabel('Most occuring country in browsing history (Legitimate Website)', fontsize=32)
+    plt.ylabel('Number of Legitimate websites of corresponding country', fontsize=32)
+    plt.xticks(x, x, fontsize=28, rotation=90)
+    plt.yticks(fontsize=28)
+    plt.title('Legitimate URLs of various country browsed as detected from Chrome Extension',fontsize=32)
     #fig = plt.figure(1)
 
     ax = plt.gca()
-    ax.legend(prop={'size': 40})
-    legend = plt.legend()
+    #ax.legend(prop={'size': 40})
+    #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location6, dpi=80)
+    fig.savefig(location6, dpi=150,bbox_inches='tight')
 
 
         
