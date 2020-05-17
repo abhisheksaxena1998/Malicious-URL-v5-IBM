@@ -812,7 +812,7 @@ def fetchanalysis(request):
 
     sizes=[l,m]
 
-    colors = ['#00ff00','yellow']
+    colors = ['yellow','orange']
     explode = (0, 0)  # explode a slice if required
 
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
@@ -826,7 +826,7 @@ def fetchanalysis(request):
 
     # Set aspect ratio to be equal so that pie is drawn as a circle.
     plt.axis('equal')
-    fig.savefig(location1, dpi=80)
+    fig.savefig(location1, dpi=150)
 
     from collections import Counter
     x=[]

@@ -36,7 +36,7 @@ background-attachment: fixed;">
     z-index: 99;">
   </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark primary-color" >
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top" >
 
     <!-- Navbar brand -->
 
@@ -87,6 +87,7 @@ background-attachment: fixed;">
 
   </nav>
   <!--/.Navbar-->
+</br></br>
   {% block content %}
   <form action="{%  url 'result'  %}" autocomplete="off">
   <div class="container-fluid" style="margin-top: 1rem;">
@@ -111,7 +112,7 @@ background-attachment: fixed;">
                     <!--Mask with wave-->
                     <div class="view overlay">
                         <img src="/static/1.png" class="img-fluid" alt="Sample image with waves effect." style="margin: 0 auto;
-            margin-top: 2px;height: 20rem;animation: cubic-bezier;animation-duration: 0.9s;animation-delay: 1500ms;">
+            margin-top: 60px;height: 20rem;animation: cubic-bezier;animation-duration: 0.9s;animation-delay: 1500ms;">
                     
                     </div>
                 </div>
@@ -183,7 +184,7 @@ background-attachment: fixed;">
       <script type="text/javascript">
         $(document).ready(function () {
             //Preloader
-            preloaderFadeOutTime = 1500;
+            preloaderFadeOutTime = 1200;
             function hidePreloader() {
                 var preloader1 = $('.spinner-border');
                 var preloader2 = $('#card');
