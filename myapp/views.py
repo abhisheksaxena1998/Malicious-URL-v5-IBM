@@ -826,7 +826,7 @@ def fetchanalysis(request):
 
     # Set aspect ratio to be equal so that pie is drawn as a circle.
     plt.axis('equal')
-    fig.savefig(location1, dpi=150)
+    fig.savefig(location1, dpi=80)
 
     from collections import Counter
     x=[]
@@ -862,7 +862,7 @@ def fetchanalysis(request):
     #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location2, dpi=150,bbox_inches='tight')
+    fig.savefig(location2, dpi=80,bbox_inches='tight')
 
     from collections import Counter
     x=[]
@@ -900,7 +900,7 @@ def fetchanalysis(request):
     #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location3, dpi=150,bbox_inches='tight')
+    fig.savefig(location3, dpi=80,bbox_inches='tight')
 
     from collections import Counter
     x=[]
@@ -937,7 +937,7 @@ def fetchanalysis(request):
     #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location4, dpi=150,bbox_inches='tight')
+    fig.savefig(location4, dpi=80,bbox_inches='tight')
 
     dmf=df[df['Status']=="Malicious"]
     from collections import Counter
@@ -975,7 +975,7 @@ def fetchanalysis(request):
     #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location5, dpi=150,bbox_inches='tight')
+    fig.savefig(location5, dpi=80,bbox_inches='tight')
 
     dlf=df[df['Status']=="Legitimate"]
     from collections import Counter
@@ -1013,7 +1013,7 @@ def fetchanalysis(request):
     #legend = plt.legend()
     #plt.show()
 
-    fig.savefig(location6, dpi=150,bbox_inches='tight')
+    fig.savefig(location6, dpi=80,bbox_inches='tight')
 
 
         
