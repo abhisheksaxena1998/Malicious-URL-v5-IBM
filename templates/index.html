@@ -17,10 +17,10 @@
   <title>{% block title %}Malicious URL Detector{% endblock %}</title>
 
 </head>
-
+<div class="bg">
 <body style="background-image: url(static/wpcy.jpg);background-repeat: no-repeat;
 background-position: center;
-background-attachment: fixed;">
+background-attachment: fixed;background-size: cover;"></div>
 <div class="spinner-border" role="status" style="background-color: transparent;position: fixed;left: 49.5%;top: 50%;z-index: 99999;display: flex;color:#33ccff;">
 
 </div>
@@ -36,7 +36,7 @@ background-attachment: fixed;">
     z-index: 99;">
   </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top" >
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top scrolling-navbar" >
 
     <!-- Navbar brand -->
 
@@ -57,7 +57,7 @@ background-attachment: fixed;">
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'geturlhistory' %}">Database</a>
+          <a class="nav-link" href="{% url 'geturlhistory' %}">URL History Database</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'fetchanalysis' %}">Live Data Analysis</a>
@@ -87,7 +87,7 @@ background-attachment: fixed;">
 
   </nav>
   <!--/.Navbar-->
-</br></br>
+</br>
   {% block content %}
   <form action="{%  url 'result'  %}" autocomplete="off">
   <div class="container-fluid" style="margin-top: 1rem;">
