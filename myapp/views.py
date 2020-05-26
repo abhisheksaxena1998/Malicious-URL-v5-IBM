@@ -351,7 +351,7 @@ def result(request):
                     d=cpyres.domain_name[0]   
 
 
-                print (d)
+                #print (d)
                 try:
                     ip=socket.gethostbyname_ex(d)
                     ipadd=(ip[2][0])
@@ -382,13 +382,13 @@ def result(request):
                     iplongitude="Not Found"
                     #print (latitude)
                     #print (longitude)
-                print (ipadd)
+                '''print (ipadd)
                 print (ipcity)
                 print (ipstate)
                 print (ipcountry)
                 print (iplatitude)
                 print (iplongitude)
-
+'''
 
 
 
@@ -443,7 +443,7 @@ def result(request):
                 if org!=None:    
                     org=org.replace(",","")
                 #print (org)
-                print (dom)
+                '''print (dom)'''
                 dom="".join(dom)
                 #print (dom)
                 if registrar:

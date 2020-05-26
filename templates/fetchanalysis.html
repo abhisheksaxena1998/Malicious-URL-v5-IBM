@@ -1,10 +1,19 @@
 {% extends 'index.html' %}
 {% block title %}Fetch Live Analysis{% endblock %}
 {% block content %}
-</br>
+</br></br>
     <div class="container-fluid" style="margin-top: 1rem;margin-bottom: 5rem;">
         <div class="row">
             <div class="col-md-8" style="margin: 0 auto;">
+
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert alert-info" >Why live data analysis ? </h4>
+                    
+                    <hr>
+                    <p class="mb-0">In order to combat phishing effectively, it is important to understand how phishers use
+                        these urls and its domain, organisation and to what purposes.</p>
+                  </div>
+
                 <!-- Card -->
                 <div class="card" style="margin-bottom: 1rem;">
                     <!-- Card content -->
@@ -24,6 +33,12 @@
                         <a href="#!">
                             <div class="mask rgba-white-slight"></div>
                         </a>
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Text -->
+                        <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>Proportion of Legitimate and Malicious (Phishing URLs related to cyberfrauds are shown here. This is live analysis, the database keeps itself updated with our Chrome Extension.
+                        </p></li>
                     </div>
     
                     
@@ -55,6 +70,13 @@
                         <a href="#!">
                             <div class="mask rgba-white-slight"></div>
                         </a>
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Text -->
+                        <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>Organisation name usage is an important measure related with the scope of the global phishing problem as phishers target trending organisations and live analysis even help to understand the preferences of the visitors in terms of most visited organisation.
+                            In Test Results we have shown the detected Phishing URL instances of reputed Organisations through our Chrome Extension <a href="https://mudv5.eu-gb.cf.appdomain.cloud/testresults">https://mudv5.eu-gb.cf.appdomain.cloud/testresults </a>These Phishing URLs were detected through our Machine Learning / Data Science approach for detection of Malicious URLs related to cyberfrauds 
+                        </p></li>
                     </div>
     
                    
@@ -89,6 +111,12 @@
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Text -->
+                        <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>Analysis of URL registrar provides clues about most trending, easy accessible registrar and how phishers mislead Internet users, and reveals how phishers are using certain online service providers. 
+                        </p></li>
+                    </div>
     
                    
     
@@ -118,6 +146,13 @@
                         <a href="#!">
                             <div class="mask rgba-white-slight"></div>
                         </a>
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Text -->
+                        
+                        <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>Analysis of URLs here depicts Country Wise share in hosting websites.
+                        </p></li>
                     </div>
     
                    
@@ -150,6 +185,12 @@
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Text -->
+                        <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>Analysis of URLs here depicts Country Wise share in hosting Malicious websites.
+                        </p></li>
+                    </div>
     
                     
                 </div>
@@ -179,6 +220,12 @@
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Text -->
+                        <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>Analysis of URLs here depicts Country Wise share in hosting Legitimate websites.
+                        </p></li>
+                    </div>
     
                    
     
@@ -200,10 +247,10 @@
             <!-- Card -->
             <div class="card" style="margin-bottom: 1rem;">
                  <!-- Card content -->
-                 <div class="card-body">
-
+                 <div class="card-body card-body-cascade text-center">
+                    
                     <h5 class="card-title" style="text-align: center;margin: 0 auto;">Time when users are most active</h5>
-                    <p class="card-text" style="text-align:center"></br>The peak hours detected through browsing history depict browsing behaviour of users and in hours of maximum observed activity advertisements could be displayed as they will get attention of users in peak intervals. </p>
+                    
                 </div>  
                 <!-- Card image -->
                 <div class="view overlay">
@@ -217,8 +264,14 @@
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
+                <div class="card-body card-body-cascade text-center">
+                    <!-- Text -->
+                    <li class=" list-group-item">
+                        <p class="card-text" style="text-align:center"></br>The peak hours detected through browsing history depict browsing behaviour of users and in hours of maximum observed activity advertisements could be displayed as they will get attention of users in peak intervals. Also the peak hour shows when users are most active, this could help us in Auto-Scaling the application </p>
+                    </p></li>
+                </div>
 
-               
+                
 
             </div>
             <!-- Card -->
