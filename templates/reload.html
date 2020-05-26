@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block title %}Reload page{% endblock %}
+{% block content %}
+</br></br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0 auto;">
+            <!-- Card -->
+            <div class="card" style="margin-bottom: 1rem;">
+
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="img-fluid"
+                        src="/static/reload.png" style="    margin-left: 25%;
+                        margin-right: 25%;
+                        width: 50%;
+                        display: block;"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body">
+
+                    <!-- Title -->
+                    <h4 class="card-title" style="text-align: center;margin: 0 auto;">Please reload this page</h4>
+                    <!-- Text -->
+                    <p class="card-text" style="text-align:center">
+                        502 Bad Gateway: Registered endpoint failed to handle the request.
+                    </p>
+                    <!-- Button -->
+                </div>
+
+            </div>
+            <!-- Card -->
+        </div>
+
+    </div>
+    <div class="row" style="margin-bottom: 1rem;">
+        <a href="/" class="btn btn-primary" style="margin: 0 auto;display: block;">Home</a>
+    </div>
+
+    
+
+{% endblock %}

@@ -784,289 +784,293 @@ def api(request):
 
 
 def fetchanalysis(request):
-    import warnings
-    warnings.simplefilter(action='ignore', category=FutureWarning)
-    import pandas as pd
-    import numpy as np
-    import datetime
-
-    df=pd.read_csv("static/dataset.csv",error_bad_lines=False,warn_bad_lines=False)
-    df=df.dropna()
-    l=0
-    m=0
-    for i in df['Status']:
-        if i=="Legitimate":
-            l+=1
-        elif i=="Malicious":
-            m+=1
-    unique=str(datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S") )
-
-    location1="static/"+unique+".png"
-    loc1="/static/"+unique+".png"
-    location2="static/"+unique+"2"+".png"
-    loc2="/static/"+unique+"2"+".png"
-    location3="static/"+unique+"3"+".png"
-    loc3="/static/"+unique+"3"+".png"
-    location4="static/"+unique+"4"+".png"
-    loc4="/static/"+unique+"4"+".png"
-    location5="static/"+unique+"5"+".png"
-    loc5="/static/"+unique+"5"+".png"
-    location6="static/"+unique+"6"+".png"
-    loc6="/static/"+unique+"6"+".png"
-    location7="static/"+unique+"7"+".png"
-    loc7="/static/"+unique+"7"+".png"
-    #print (location1,location2)
-
-    #print (loc1,location1)
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(5, 4), dpi=100,subplot_kw=dict(aspect="equal"))
-
-    labels=['Legitimate','Malicious']
-
-    sizes=[l,m]
-
-    colors = ['yellow','orange']
-    explode = (0, 0)  # explode a slice if required
-
-    plt.pie(sizes, explode=explode, labels=labels, colors=colors,
-            autopct='%1.1f%%', shadow=True)
-            
-    #draw a circle at the center of pie to make it look like a donut
-    centre_circle = plt.Circle((0,0),0.50,color='black', fc='white',linewidth=1.25)
-    fig = plt.gcf()
-    fig.gca().add_artist(centre_circle)
-
-
-    # Set aspect ratio to be equal so that pie is drawn as a circle.
-    plt.axis('equal')
-    fig.savefig(location1, dpi=100)
-
-    from collections import Counter
-    x=[]
-    y=[]
-    for i,j in (Counter(df['Organisation']).most_common(20)):
-        if i not in ['REDACTED FOR PRIVACY','Not found in database','None','N/A']:
-            x.append((i[:15]))
-            y.append(j)
-    #print (x,y )
-    import pandas as pd
-    import numpy as np
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    sns.set_style("whitegrid", {"axes.facecolor": ".2"})
-
-    from matplotlib.pyplot import figure
-    import matplotlib.pyplot as plt
-
-    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(20,20), facecolor='w', edgecolor='k')
-
-    plt.bar(x, y,color='#0000ff')
-    plt.xlabel('Most occuring organisations in browsing history', fontsize=32)
-    plt.ylabel('Number of websites of corresponding organisation', fontsize=32)
-    plt.xticks(x, x, fontsize=28, rotation=90)
-    plt.yticks(fontsize=28)
-    plt.title('URLs of various organisations browsed as detected from Chrome Extension',fontsize=32)
-    #fig = plt.figure(1)
-
-    ax = plt.gca()
-    #ax.legend(prop={'size': 40})
-    #legend = plt.legend()
-    #plt.show()
-
-    fig.savefig(location2, dpi=80,bbox_inches='tight')
-
-    from collections import Counter
-    x=[]
-    y=[]
-    for i,j in (Counter(df['Registrar']).most_common(20)):
-        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i[:20])
-            y.append(j)
-    #print (x,y )
-    import pandas as pd
-    import numpy as np
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+    try:
+
+        import warnings
+        warnings.simplefilter(action='ignore', category=FutureWarning)
+        import pandas as pd
+        import numpy as np
+        import datetime
+
+        df=pd.read_csv("static/dataset.csv",error_bad_lines=False,warn_bad_lines=False)
+        df=df.dropna()
+        l=0
+        m=0
+        for i in df['Status']:
+            if i=="Legitimate":
+                l+=1
+            elif i=="Malicious":
+                m+=1
+        unique=str(datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S") )
+
+        location1="static/"+unique+".png"
+        loc1="/static/"+unique+".png"
+        location2="static/"+unique+"2"+".png"
+        loc2="/static/"+unique+"2"+".png"
+        location3="static/"+unique+"3"+".png"
+        loc3="/static/"+unique+"3"+".png"
+        location4="static/"+unique+"4"+".png"
+        loc4="/static/"+unique+"4"+".png"
+        location5="static/"+unique+"5"+".png"
+        loc5="/static/"+unique+"5"+".png"
+        location6="static/"+unique+"6"+".png"
+        loc6="/static/"+unique+"6"+".png"
+        location7="static/"+unique+"7"+".png"
+        loc7="/static/"+unique+"7"+".png"
+        #print (location1,location2)
+
+        #print (loc1,location1)
+        import matplotlib.pyplot as plt
+        fig, ax = plt.subplots(figsize=(5, 4), dpi=100,subplot_kw=dict(aspect="equal"))
+
+        labels=['Legitimate','Malicious']
+
+        sizes=[l,m]
+
+        colors = ['yellow','orange']
+        explode = (0, 0)  # explode a slice if required
+
+        plt.pie(sizes, explode=explode, labels=labels, colors=colors,
+                autopct='%1.1f%%', shadow=True)
+                
+        #draw a circle at the center of pie to make it look like a donut
+        centre_circle = plt.Circle((0,0),0.50,color='black', fc='white',linewidth=1.25)
+        fig = plt.gcf()
+        fig.gca().add_artist(centre_circle)
+
+
+        # Set aspect ratio to be equal so that pie is drawn as a circle.
+        plt.axis('equal')
+        fig.savefig(location1, dpi=100)
+
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(df['Organisation']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None','N/A']:
+                x.append((i[:15]))
+                y.append(j)
+        #print (x,y )
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        sns.set_style("whitegrid", {"axes.facecolor": ".2"})
+
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
+
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20), facecolor='w', edgecolor='k')
+
+        plt.bar(x, y,color='#0000ff')
+        plt.xlabel('Most occuring organisations in browsing history', fontsize=32)
+        plt.ylabel('Number of websites of corresponding organisation', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('URLs of various organisations browsed as detected from Chrome Extension',fontsize=32)
+        #fig = plt.figure(1)
+
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
+
+        fig.savefig(location2, dpi=80,bbox_inches='tight')
+
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(df['Registrar']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+                x.append(i[:20])
+                y.append(j)
+        #print (x,y )
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
+
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20))
+
+        plt.bar(x, y,color='yellow',edgecolor='black')
+
+
+        plt.xlabel('Most occuring registrars in browsing history', fontsize=32)
+        plt.ylabel('Number of websites of corresponding registrar', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('URLs of various registrars browsed as detected from Chrome Extension',fontsize=32)
+        #fig = plt.figure(1)
+
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
+
+        fig.savefig(location3, dpi=80,bbox_inches='tight')
 
-    from matplotlib.pyplot import figure
-    import matplotlib.pyplot as plt
-
-    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(20,20))
-
-    plt.bar(x, y,color='yellow',edgecolor='black')
-
-
-    plt.xlabel('Most occuring registrars in browsing history', fontsize=32)
-    plt.ylabel('Number of websites of corresponding registrar', fontsize=32)
-    plt.xticks(x, x, fontsize=28, rotation=90)
-    plt.yticks(fontsize=28)
-    plt.title('URLs of various registrars browsed as detected from Chrome Extension',fontsize=32)
-    #fig = plt.figure(1)
-
-    ax = plt.gca()
-    #ax.legend(prop={'size': 40})
-    #legend = plt.legend()
-    #plt.show()
-
-    fig.savefig(location3, dpi=80,bbox_inches='tight')
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(df['Country']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+                x.append(i)
+                y.append(j)
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
+
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20))
+
+        plt.bar(x, y,color='#0099ff',edgecolor='black')
+
+
+        plt.xlabel('Most occuring country in browsing history', fontsize=32)
+        plt.ylabel('Number of websites of corresponding country', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('URLs of various country browsed as detected from Chrome Extension',fontsize=32)
+        #fig = plt.figure(1)
+
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
+
+        fig.savefig(location4, dpi=80,bbox_inches='tight')
+
+        dmf=df[df['Status']=="Malicious"]
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(dmf['Country']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+                x.append(i)
+                y.append(j)
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
 
-    from collections import Counter
-    x=[]
-    y=[]
-    for i,j in (Counter(df['Country']).most_common(20)):
-        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i)
-            y.append(j)
-    import pandas as pd
-    import numpy as np
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
-
-    from matplotlib.pyplot import figure
-    import matplotlib.pyplot as plt
-
-    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(20,20))
-
-    plt.bar(x, y,color='#0099ff',edgecolor='black')
-
-
-    plt.xlabel('Most occuring country in browsing history', fontsize=32)
-    plt.ylabel('Number of websites of corresponding country', fontsize=32)
-    plt.xticks(x, x, fontsize=28, rotation=90)
-    plt.yticks(fontsize=28)
-    plt.title('URLs of various country browsed as detected from Chrome Extension',fontsize=32)
-    #fig = plt.figure(1)
-
-    ax = plt.gca()
-    #ax.legend(prop={'size': 40})
-    #legend = plt.legend()
-    #plt.show()
-
-    fig.savefig(location4, dpi=80,bbox_inches='tight')
-
-    dmf=df[df['Status']=="Malicious"]
-    from collections import Counter
-    x=[]
-    y=[]
-    for i,j in (Counter(dmf['Country']).most_common(20)):
-        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i)
-            y.append(j)
-    import pandas as pd
-    import numpy as np
-    import seaborn as sns
-    import matplotlib.pyplot as plt
+        sns.set_style("darkgrid", {"axes.facecolor": ".2"})
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
 
-    from matplotlib.pyplot import figure
-    import matplotlib.pyplot as plt
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20))
 
-    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(20,20))
+        plt.bar(x, y,color='red',edgecolor='black')
 
-    plt.bar(x, y,color='red',edgecolor='black')
 
+        plt.xlabel('Most occuring country in browsing history (Malicious Website)', fontsize=32)
+        plt.ylabel('Number of Malicious websites of corresponding country', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('Malicious URLs of various country browsed as detected from Chrome Extension',fontsize=32)
+        #fig = plt.figure(1)
 
-    plt.xlabel('Most occuring country in browsing history (Malicious Website)', fontsize=32)
-    plt.ylabel('Number of Malicious websites of corresponding country', fontsize=32)
-    plt.xticks(x, x, fontsize=28, rotation=90)
-    plt.yticks(fontsize=28)
-    plt.title('Malicious URLs of various country browsed as detected from Chrome Extension',fontsize=32)
-    #fig = plt.figure(1)
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
 
-    ax = plt.gca()
-    #ax.legend(prop={'size': 40})
-    #legend = plt.legend()
-    #plt.show()
+        fig.savefig(location5, dpi=80,bbox_inches='tight')
 
-    fig.savefig(location5, dpi=80,bbox_inches='tight')
+        dlf=df[df['Status']=="Legitimate"]
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(dlf['Country']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+                x.append(i)
+                y.append(j)
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
 
-    dlf=df[df['Status']=="Legitimate"]
-    from collections import Counter
-    x=[]
-    y=[]
-    for i,j in (Counter(dlf['Country']).most_common(20)):
-        if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
-            x.append(i)
-            y.append(j)
-    import pandas as pd
-    import numpy as np
-    import seaborn as sns
-    import matplotlib.pyplot as plt
+        sns.set_style("darkgrid", {"axes.facecolor": ".2"})
 
-    sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
 
-    from matplotlib.pyplot import figure
-    import matplotlib.pyplot as plt
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20))
 
-    #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
-    fig, ax = plt.subplots(figsize=(20,20))
+        plt.bar(x, y,color='#ccff33',edgecolor='black')
 
-    plt.bar(x, y,color='#ccff33',edgecolor='black')
 
+        plt.xlabel('Most occuring country in browsing history (Legitimate Website)', fontsize=32)
+        plt.ylabel('Number of Legitimate websites of corresponding country', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('Legitimate URLs of various country browsed as detected from Chrome Extension',fontsize=32)
+        #fig = plt.figure(1)
 
-    plt.xlabel('Most occuring country in browsing history (Legitimate Website)', fontsize=32)
-    plt.ylabel('Number of Legitimate websites of corresponding country', fontsize=32)
-    plt.xticks(x, x, fontsize=28, rotation=90)
-    plt.yticks(fontsize=28)
-    plt.title('Legitimate URLs of various country browsed as detected from Chrome Extension',fontsize=32)
-    #fig = plt.figure(1)
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
 
-    ax = plt.gca()
-    #ax.legend(prop={'size': 40})
-    #legend = plt.legend()
-    #plt.show()
+        fig.savefig(location6, dpi=80,bbox_inches='tight')
+        from collections import Counter
+        hours=[]
+        for i in df['Time']:
+            hours.append(i[11:13])
+            #print (i[11:13])
+        
+        di=dict(Counter(hours))
+        di=sorted(di.items())
+        
 
-    fig.savefig(location6, dpi=80,bbox_inches='tight')
-    from collections import Counter
-    hours=[]
-    for i in df['Time']:
-        hours.append(i[11:13])
-        #print (i[11:13])
-    
-    di=dict(Counter(hours))
-    di=sorted(di.items())
-    
+        x=[]
+        y=[]
+        x, y = zip(*di)
+        fig, ax = plt.subplots(figsize=(20,20))
 
-    x=[]
-    y=[]
-    x, y = zip(*di)
-    fig, ax = plt.subplots(figsize=(20,20))
+        plt.plot(x, y,color='violet', marker='o', linestyle='dashed',linewidth=5, markersize=20,label="Number of URLs browsed")#
 
-    plt.plot(x, y,color='violet', marker='o', linestyle='dashed',linewidth=5, markersize=20,label="Number of URLs browsed")#
+        #plt.yticks([50,100,150,200,250,300,350,400,450,500])
+        plt.xlabel('Hours in a day',fontsize=32)
+        plt.ylabel('Number of URLs browsed',fontsize=32)
+        plt.xticks(fontsize=28)
+        plt.yticks(fontsize=28)
+        plt.title("Variation in number of URLs browsed and Hours",fontsize=32)
+        ax = plt.gca()
+        #ax.legend(prop={'size': 20})
 
-    #plt.yticks([50,100,150,200,250,300,350,400,450,500])
-    plt.xlabel('Hours in a day',fontsize=32)
-    plt.ylabel('Number of URLs browsed',fontsize=32)
-    plt.xticks(fontsize=28)
-    plt.yticks(fontsize=28)
-    plt.title("Variation in number of URLs browsed and Hours",fontsize=32)
-    ax = plt.gca()
-    #ax.legend(prop={'size': 20})
+        #ax.tick_params(axis = 'both', which = 'major', labelsize = 15)  
+        fig.savefig(location7, dpi=80,bbox_inches='tight')
 
-    #ax.tick_params(axis = 'both', which = 'major', labelsize = 15)  
-    fig.savefig(location7, dpi=80,bbox_inches='tight')
 
+                
 
-            
 
 
 
 
 
 
+        return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6,'f8':loc7})
+    except:
+        return render(request,'reload.html')  
 
-    return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6,'f8':loc7})
-    
 
         
 
