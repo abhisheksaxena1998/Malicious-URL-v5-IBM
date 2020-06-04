@@ -146,7 +146,14 @@
                     </div>
                 </div>
 
-                
+                <script>
+                    Swal.fire(
+                    'This url looks safe!',
+                    'Go Ahead !',
+                    'success'
+                             )
+                 </script>
+                 
                 {% else %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Malicious Url</strong>
@@ -269,6 +276,13 @@
                             <!-- Card -->
                         </div>
                     </div>
+                    <script>
+                    Swal.fire(
+                        'Phishing Detected !',
+      'You are safe :)',
+      'error'
+)
+                    </script>
                     {% endif %}
                 </div>
             </div>
