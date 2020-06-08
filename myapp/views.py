@@ -61,7 +61,7 @@ import datetime
 
 
 def result(request):
-    text=request.GET['url'].lower()
+    text=request.GET['url'].lower().strip()
     try:
         #nm=request.GET['url']
         import tldextract
@@ -71,49 +71,8 @@ def result(request):
         
         if not text.startswith('http://') and not text.startswith('https://'):
             return render(request,"404.html")
-        if text.startswith('https://malicious-url-detectorv5.herokuapp.com/') or text.startswith('https://mudv9.eu-gb.cf.appdomain.cloud/')  :
-            return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"The Legions",
-                        'org':"The Legions",
-                        'add':"New Delhi",
-                        'city':"New Delhi",
-                        'state':"New Delhi",
-                        'ziip':"201301",
-                        'country':"India",'emails':"thelegions@gmail.com",
-                        'dom':"Hidden For Privacy",'rank':"Hidden For Privacy","tags":"Hidden For Privacy","registrar":"Hidden For Privacy","var13":"NA","varab":"NA","var11":"NA","var10":"NA","var5":"NA","var4":"NA","var3":"NA"})
-
-        elif text.startswith('https://www.youtube.com/results?'):
-                        return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"NA for youtube search results",
-                                'org':"NA for youtube search results",
-                                'add':"NA for youtube search results",
-                                'city':"NA for youtube search results",
-                                'state':"NA for youtube search results",
-                                'ziip':"NA for youtube search results",
-                                'country':"NA for youtube search results",'emails':"NA for youtube search results",
-                                'dom':"NA for youtube search results",'rank':"NA for youtube search results","tags":"NA for youtube search results","registrar":"NA for youtube search results","var13":"NA for youtube search results","varab":"NA for youtube search results","var11":"NA for youtube search results","var10":"NA for youtube search results","var5":"NA for youtube search results","var4":"NA for youtube search results","var3":"NA for youtube search results"})
-
-
-        elif text.startswith('https://www.google.com/search?q='):
-                return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"NA for google search",
-                        'org':"NA for google search",
-                        'add':"NA for google search",
-                        'city':"NA for google search",
-                        'state':"NA for google search",
-                        'ziip':"NA for google search",
-                        'country':"NA for google search",'emails':"NA for google search",
-                        'dom':"NA for google search",'rank':"NA for google search","tags":"NA for google search","registrar":"Hidden For Privacy","var13":"NA for google search","varab":"NA for google search","var11":"NA for google search","var10":"NA for google search","var5":"NA for google search","var4":"NA for google search","var3":"NA for google search"})
-
-
-        elif text.startswith('https://www.youtube.com/watch?v='):
-            return render(request,'result.html',{'result':'Real-time analysis successfull','f2':'Legtimate','mal': True,'text':text,'name':"NA for Youtube search",
-                        'org':"NA for Youtube search",
-                        'add':"NA for Youtube search",
-                        'city':"NA for Youtube search",
-                        'state':"NA for Youtube search",
-                        'ziip':"NA for Youtube search",
-                        'country':"NA for Youtube search",'emails':"NA for Youtube search",
-                        'dom':"NA for Youtube search",'rank':"NA for Youtube search","tags":"NA for Youtube search","registrar":"Hidden For Privacy","var13":"NA for Youtube search","varab":"NA for Youtube search","var11":"NA for Youtube search","var10":"NA for Youtube search","var5":"NA for Youtube search","var4":"NA for Youtube search","var3":"NA for Youtube search"})
-
-        elif (text.startswith('https://www.google.com/search?q=')==False ):
+        
+        if (text.startswith('https://www.google.com/search?q=')==False ):
 
             if text.startswith('https://') or text.startswith('http://'):
                 var13="Not Applicable"
@@ -492,54 +451,12 @@ def result(request):
   
 
 def api(request):
-    text=request.GET['query'].lower()
+    text=request.GET['query'].lower().strip()
     try:
         
         import datetime
 
-        if text.startswith('https://malicious-url-detectorv5.herokuapp.com/'): 
-            import datetime
-            mydict = {
-                "query" : text,
-                "malware" : False,
-                "datetime" : str(datetime.datetime.now())
-            }
-            response = JsonResponse(mydict)
-            return response  
-            
-
-        
-        elif text.startswith('https://mudv9.eu-gb.cf.appdomain.cloud/'):
-            import datetime
-            mydict = {
-                "query" : text,
-                "malware" : False,
-                "datetime" : str(datetime.datetime.now())
-            }
-            response = JsonResponse(mydict)
-            return response
-
-        elif text.startswith('https://www.youtube.com/results?'):
-            import datetime
-            mydict = {
-                "query" : text,
-                "malware" : False,
-                "datetime" : str(datetime.datetime.now())
-            }
-            response = JsonResponse(mydict)
-            return response
-
-        elif text.startswith('https://www.youtube.com/'):
-            import datetime
-            mydict = {
-                "query" : text,
-                "malware" : False,
-                "datetime" : str(datetime.datetime.now())
-            }
-            response = JsonResponse(mydict)
-            return response  
-
-        elif text.startswith('https://www.google.com/search?q='):
+        if text.startswith('https://www.google.com/search?q='):
             import datetime
             mydict = {
                 "query" : text,
@@ -817,6 +734,8 @@ def fetchanalysis(request):
         loc6="/static/"+unique+"6"+".png"
         location7="static/"+unique+"7"+".png"
         loc7="/static/"+unique+"7"+".png"
+        location8="static/"+unique+"8"+".png"
+        loc8="/static/"+unique+"8"+".png"
         #print (location1,location2)
 
         #print (loc1,location1)
@@ -920,8 +839,8 @@ def fetchanalysis(request):
         from collections import Counter
         x=[]
         y=[]
-        for i,j in (Counter(df['Country']).most_common(20)):
-            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+        for i,j in (Counter(df['Country'].str.upper()).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None','NONE','NOT FOUND IN DATABASE']:
                 x.append(i)
                 y.append(j)
         import pandas as pd
@@ -955,11 +874,12 @@ def fetchanalysis(request):
         fig.savefig(location4, dpi=80,bbox_inches='tight')
 
         dmf=df[df['Status']=="Malicious"]
+        nm=len(dmf)
         from collections import Counter
         x=[]
         y=[]
-        for i,j in (Counter(dmf['Country']).most_common(20)):
-            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+        for i,j in (Counter(dmf['Country'].str.upper()).most_common(20)):
+            if i not in  ['REDACTED FOR PRIVACY','Not found in database','None','NONE','NOT FOUND IN DATABASE','REDACTED'] and len(i)<=2:
                 x.append(i)
                 y.append(j)
         import pandas as pd
@@ -992,12 +912,58 @@ def fetchanalysis(request):
 
         fig.savefig(location5, dpi=80,bbox_inches='tight')
 
-        dlf=df[df['Status']=="Legitimate"]
+
+
         from collections import Counter
         x=[]
         y=[]
-        for i,j in (Counter(dlf['Country']).most_common(20)):
-            if i not in ['REDACTED FOR PRIVACY','Not found in database','None']:
+        for i,j in (Counter(dmf['Registrar']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None','NONE','NOT FOUND IN DATABASE','REDACTED','Not Found']:
+                x.append(i[:20])
+                y.append(j)
+        #print (x,y )
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
+
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20))
+
+        plt.bar(x, y,color='orange',edgecolor='black')
+
+
+        plt.xlabel('Most occuring registrars in Malicious URLs', fontsize=32)
+        plt.ylabel('Number of websites of corresponding registrar', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('URLs of various registrars browsed as detected from Chrome Extension Malicious URLs',fontsize=32)
+        #fig = plt.figure(1)
+
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
+
+        fig.savefig(location8, dpi=80,bbox_inches='tight')
+
+
+
+
+
+
+        dlf=df[df['Status']=="Legitimate"]
+        nl=len(dlf)
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(dlf['Country'].str.upper()).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None','NONE','NOT FOUND IN DATABASE','REDACTED']:
                 x.append(i)
                 y.append(j)
         import pandas as pd
@@ -1067,7 +1033,7 @@ def fetchanalysis(request):
 
 
 
-        return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6,'f8':loc7})
+        return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6,'f8':loc7,'f9':loc8,'nm':nm,'nl':nl})
     except:
         return render(request,'reload.html')  
 
