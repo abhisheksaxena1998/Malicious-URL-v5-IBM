@@ -736,6 +736,8 @@ def fetchanalysis(request):
         loc7="/static/"+unique+"7"+".png"
         location8="static/"+unique+"8"+".png"
         loc8="/static/"+unique+"8"+".png"
+        location9="static/"+unique+"9"+".png"
+        loc9="/static/"+unique+"9"+".png"
         #print (location1,location2)
 
         #print (loc1,location1)
@@ -1025,7 +1027,45 @@ def fetchanalysis(request):
         fig.savefig(location7, dpi=80,bbox_inches='tight')
 
 
-                
+          
+        from collections import Counter
+        x=[]
+        y=[]
+        for i,j in (Counter(dlf['Registrar']).most_common(20)):
+            if i not in ['REDACTED FOR PRIVACY','Not found in database','None','NONE','NOT FOUND IN DATABASE','REDACTED','Not Found']:
+                x.append(i[:20])
+                y.append(j)
+        #print (x,y )
+        import pandas as pd
+        import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        sns.set_style("darkgrid", {"axes.facecolor": ".2"})
+
+        from matplotlib.pyplot import figure
+        import matplotlib.pyplot as plt
+
+        #figure(num=None, figsize=(12,14), dpi=80, facecolor='w', edgecolor='k')
+        fig, ax = plt.subplots(figsize=(20,20))
+
+        plt.bar(x, y,color='#66ff66',edgecolor='black')
+
+
+        plt.xlabel('Most occuring registrars in Legitimate URLs', fontsize=32)
+        plt.ylabel('Number of websites of corresponding registrar', fontsize=32)
+        plt.xticks(x, x, fontsize=28, rotation=90)
+        plt.yticks(fontsize=28)
+        plt.title('URLs of various registrars browsed as detected from Chrome Extension Legitimate URLs',fontsize=32)
+        #fig = plt.figure(1)
+
+        ax = plt.gca()
+        #ax.legend(prop={'size': 40})
+        #legend = plt.legend()
+        #plt.show()
+
+        fig.savefig(location9, dpi=80,bbox_inches='tight')
+      
 
 
 
@@ -1033,7 +1073,7 @@ def fetchanalysis(request):
 
 
 
-        return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6,'f8':loc7,'f9':loc8,'nm':nm,'nl':nl})
+        return render(request, 'fetchanalysis.html',{'f2':loc1,'f3':loc2,'f4':loc3,'f5':loc4,'f6':loc5,'f7':loc6,'f8':loc7,'f9':loc8,'nm':nm,'nl':nl,'f10':loc9})
     except:
         return render(request,'reload.html')  
 
