@@ -414,7 +414,7 @@ def result(request):
                 import csv
                 with open ('static//dataset.csv','a',encoding="utf-8") as res:        
                     writer=csv.writer(res)           
-                    s="{},{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(text,te,str(name),
+                    s="{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(te,str(name).replace(",",''),
                         str(org).replace(",",''),
                         str(add).replace(",",''),
                         str(city).replace(",",''),
