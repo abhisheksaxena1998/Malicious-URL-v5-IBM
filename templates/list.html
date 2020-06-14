@@ -1,6 +1,93 @@
-{% extends 'index.html' %}
-{% block title %}DataBase{% endblock %}
-{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+  <link rel="icon" href="{%static '46-512.png' %}" type="image/png">
+  <title>URL history</title>
+
+</head>
+<div class="bg">
+<body style="background-image: url(static/wpcy.jpg);background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;background-size: cover;"></div>
+  <!--Navbar-->
+  <div class="card" id="card" style="
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 99;">
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top scrolling-navbar" >
+
+    <!-- Navbar brand -->
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'geturlhistory' %}">URL History Database</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'fetchanalysis' %}">Live Data Analysis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'testresults' %}">Test Results</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'getuserfeedbackform' %}">User FeedBack</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'discuss' %}">Discuss Channel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'getdataset' %}">Download Dataset (URL History)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About Application</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% static 'chrome-ext.zip' %}" download>Download Chrome Extension</a>
+        </li>
+      </ul>
+      <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+
+  </nav>
+  <!--/.Navbar-->
+
 </br></br>
 <div class="container-fluid" style="margin-top: 2px;">
   <div class="row">
@@ -77,4 +164,50 @@
       {% endfor %}
     </div>
   </div>
-  {% endblock %}
+  <div class="container-fluid">
+    <!-- Footer -->
+    <footer class="page-footer font-small blue fixed-bottom">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3"
+        style="background: black;color: white;font-weight:bold;font-size:0.5rem;">
+        <span>© 2020 Copyright: <a href="https://abhisheksportfolio.herokuapp.com/">Abhishek Saxena&nbsp;&nbsp;
+          <a class="ins-ic" href="https://github.com/abhisheksaxena1998"><i class="fab fa-github  fa-3x"></i></a></span>
+          
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- JQuery -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          //Preloader
+          preloaderFadeOutTime = 500;
+          function hidePreloader() {
+              var preloader1 = $('.spinner-border');
+              var preloader2 = $('#card');
+
+              preloader1.fadeOut(preloaderFadeOutTime);
+              preloader2.fadeOut(preloaderFadeOutTime);
+
+
+          }
+          hidePreloader();
+      });
+  </script>
+</body>
+
+</html>
