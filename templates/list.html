@@ -26,16 +26,7 @@
 background-position: center;
 background-attachment: fixed;background-size: cover;"></div>
   <!--Navbar-->
-  <div class="card" id="card" style="
-    height: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 99;">
-  </div>
-
+ 
   <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top scrolling-navbar" >
 
     <!-- Navbar brand -->
@@ -192,22 +183,7 @@ background-attachment: fixed;background-size: cover;"></div>
   <!-- MDB core JavaScript -->
   <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-          //Preloader
-          preloaderFadeOutTime = 500;
-          function hidePreloader() {
-              var preloader1 = $('.spinner-border');
-              var preloader2 = $('#card');
-
-              preloader1.fadeOut(preloaderFadeOutTime);
-              preloader2.fadeOut(preloaderFadeOutTime);
-
-
-          }
-          hidePreloader();
-      });
-  </script>
+  
 </body>
 
 </html>
