@@ -422,7 +422,18 @@ def result(request):
                         str(ziip).replace(",",''),
                         str(country).replace(",",''),str(emails).replace(",",''),
                         str(dom).replace(",",''),rank,str(registrar).replace(",",''),str(datetime.datetime.now()))
-                    res.write(s)      
+                    res.write(s)
+                with open ('static//urldataset.csv','a',encoding="utf-8") as res:        
+                    writer=csv.writer(res)           
+                    s="{},{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(str(text).replace(",",''),te,str(name).replace(",",''),
+                        str(org).replace(",",''),
+                        str(add).replace(",",''),
+                        str(city).replace(",",''),
+                        str(state).replace(",",''),
+                        str(ziip).replace(",",''),
+                        str(country).replace(",",''),str(emails).replace(",",''),
+                        str(dom).replace(",",''),rank,str(registrar).replace(",",''),str(datetime.datetime.now()))
+                    res.write(s)          
             
                 return render(request,'result.html',{'result':'Real-time analysis successfull','f2':te,'mal': mal,'text':text,'name':nm,
                         'org':oor,
@@ -1000,7 +1011,8 @@ def fetchanalysis(request):
         from collections import Counter
         hours=[]
         for i in df['Time']:
-            hours.append(i[11:13])
+            if i[11:13] != "":
+                hours.append(i[11:13])
             #print (i[11:13])
         
         di=dict(Counter(hours))
@@ -1011,7 +1023,6 @@ def fetchanalysis(request):
         y=[]
         x, y = zip(*di)
         fig, ax = plt.subplots(figsize=(20,20))
-
         plt.plot(x, y,color='violet', marker='o', linestyle='dashed',linewidth=5, markersize=20,label="Number of URLs browsed")#
 
         #plt.yticks([50,100,150,200,250,300,350,400,450,500])
