@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('',views.index,name='index'),
     path('getuserfeedbackform',views.getuserfeedbackform,name="getuserfeedbackform"),
+    path('cloudantcsv',views.cloudantcsv,name="cloudantcsv"),
     path('saveuserfeedbackform',views.saveuserfeedbackform,name="saveuserfeedbackform"),
     path('api',views.api,name='api'),
     path('testresults',views.testresults,name='testresults'),

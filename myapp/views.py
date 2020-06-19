@@ -11,6 +11,50 @@ from .models import *
 
 # Create your views here.
 
+def cloudantcsv(request):
+    import numpy as np
+    import pandas as pd
+    import time
+
+    import datetime
+    from cloudant.client import Cloudant
+    from cloudant.error import CloudantException
+    from cloudant.result import Result, ResultByKey
+
+    client = Cloudant("5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix", "efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508", url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud")
+    client.connect()
+    my_database = client.create_database("dataset")
+    dtt=[]
+    i=0
+    for document in my_database:
+        if i<100:
+            dtt.append(document)
+            time.sleep(0.0001)
+            i+=1
+        else:
+            break       
+         
+    df=pd.DataFrame(dtt)
+    filename="static/cloudantdataset"+".csv"
+    df.to_csv(filename)
+    import csv
+    import pandas as pd
+    data = pd.read_csv(filename, header=0)
+    stocklist = list(data.values)
+    import os
+    if os.path.exists("static/cloudantdataset.csv"):
+        
+        os.remove("static/cloudantdataset.csv")
+        print ("deleted")
+
+
+    #print (stocklist)
+    
+    return render(request,'cloudantcsv.html',{'stocklist':stocklist})
+
+
+
+
 def error_404_view(request, exception):
     return render(request,'404.html')
 
@@ -1180,8 +1224,7 @@ def searchdiscuss(request):
         return render(request,'404.html')
 
 def getdataset(request):
-    try:
-        return render(request,'getdataset.html')
-    except:
-        return render(request,'404.html')
-			
+    
+
+    return render(request,'getdataset.html')
+    		
