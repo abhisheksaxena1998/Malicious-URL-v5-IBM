@@ -12,46 +12,8 @@ from .models import *
 # Create your views here.
 
 def cloudantcsv(request):
-    import numpy as np
-    import pandas as pd
-    import time
-
-    import datetime
-    from cloudant.client import Cloudant
-    from cloudant.error import CloudantException
-    from cloudant.result import Result, ResultByKey
-
-    client = Cloudant("5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix", "efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508", url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud")
-    client.connect()
-    my_database = client.create_database("dataset")
-    dtt=[]
-    i=0
-    for document in my_database:
-        if i<100:
-            dtt.append(document)
-            time.sleep(0.0001)
-            i+=1
-        else:
-            break       
-         
-    df=pd.DataFrame(dtt)
-    filename="static/cloudantdataset"+".csv"
-    df.to_csv(filename)
-    import csv
-    import pandas as pd
-    data = pd.read_csv(filename, header=0)
-    stocklist = list(data.values)
-    import os
-    if os.path.exists("static/cloudantdataset.csv"):
-        
-        os.remove("static/cloudantdataset.csv")
-        print ("deleted")
-
-
-    #print (stocklist)
-    
-    return render(request,'cloudantcsv.html',{'stocklist':stocklist})
-
+    from myapp.display import html
+    return HttpResponse(html())
 
 
 
@@ -107,6 +69,7 @@ import datetime
 def result(request):
     text=request.GET['url'].lower().strip()
     try:
+        
         #nm=request.GET['url']
         import tldextract
         do=tldextract.extract(text).domain
@@ -455,6 +418,11 @@ def result(request):
                 #print (emails)
                 #print(city)
                 import datetime
+
+
+
+
+
                 import csv
                 with open ('static//dataset.csv','a',encoding="utf-8") as res:        
                     writer=csv.writer(res)           
@@ -467,17 +435,99 @@ def result(request):
                         str(country).replace(",",''),str(emails).replace(",",''),
                         str(dom).replace(",",''),rank,str(registrar).replace(",",''),str(datetime.datetime.now()))
                     res.write(s)
-                with open ('static//urldataset.csv','a',encoding="utf-8") as res:        
-                    writer=csv.writer(res)           
-                    s="{},{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(str(text).replace(",",''),te,str(name).replace(",",''),
-                        str(org).replace(",",''),
-                        str(add).replace(",",''),
-                        str(city).replace(",",''),
-                        str(state).replace(",",''),
-                        str(ziip).replace(",",''),
-                        str(country).replace(",",''),str(emails).replace(",",''),
-                        str(dom).replace(",",''),rank,str(registrar).replace(",",''),str(datetime.datetime.now()))
-                    res.write(s)          
+
+
+                url_organisations=str(org).replace(",",'')
+                #print(url_organisations)
+                url_address=str(add).replace(",",'')
+                #print(url_address)
+                url_city=str(city).replace(",",'')
+                #print(url_city)
+                url_state=str(state).replace(",",'')
+                #print(url_state)
+                url_zip=str(ziip).replace(",",'')
+                #print(url_zip)
+                url_country=str(country).replace(",",'')
+                #print(url_country)
+                url_email=str(emails).replace(",",'')
+                #print(url_email)
+                url_domain=str(dom).replace(",",'')
+                #print(url_domain)
+                    #rank
+                #print(rank)
+                url_registrar=str(registrar).replace(",",'')
+                #print(url_registrar)
+                date=str(datetime.datetime.now())
+                #print(date)
+                    
+
+                    ##cloudant
+                    #using both Authentication method "IBM Cloud Identity and Access Management (IAM)"
+                from cloudant.client import Cloudant
+                from cloudant.error import CloudantException
+                from cloudant.result import Result, ResultByKey
+                    
+                    #build connection using cloudant username,password and url
+                    #----------connection details------------#
+                    #username="5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix"
+                    #password="efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508"
+                    #url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud"
+                client = Cloudant("5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix", "efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508", url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud")
+
+                client.connect()
+                    #created database name "URL"
+                database_name = "url"
+                my_database = client.create_database(database_name)
+                    #check connection between cloudant and application
+                if my_database.exists():
+                    print(f"'{database_name}' successfully created.")
+                else:
+                    print("connection failed")
+
+                    #store data in json and push to cloudant
+                import json
+                json_document = {
+                    "URL": str(text),
+                    "Property": str(te),
+                    "Name": str(name),
+                    "Organisation": str(url_organisations),
+                    "Address": str(url_address),
+                    "City": str(url_city),
+                    "State": str(url_state),
+                    "Zipcode": str(url_zip),
+                    "Country": str(url_country),
+                    "Domain": str(url_domain),
+                    "Alexa Rank": str(rank),
+                    "Registrar": str(url_registrar),
+                    "E-mails": str(url_email),
+                    "time": str(date)}
+                    
+                new_document = my_database.create_document(json_document)
+                ##csv read                
+                if new_document.exists():
+                    import csv
+                    with open("static/cloudant_count2.csv", "r") as f:
+                        for row in f:
+                            cot=int(row)
+                    cot=cot+1
+                    print(cot)
+                ##csv write
+                    file = open('static/cloudant_count2.csv','w')
+                    file.write(str(cot))
+                    file.close()
+                    print(f"successfully created.")
+                else:
+                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
+                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
+                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
+                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
+                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
+
+                    print("URl: ",text)
+                    print("Organisation: ",url_organisations)
+
+                if text.startswith('https://mudvfinal.eu-gb.cf.appdomain.cloud/'):
+                    mal=True
             
                 return render(request,'result.html',{'result':'Real-time analysis successfull','f2':te,'mal': mal,'text':text,'name':nm,
                         'org':oor,
@@ -510,6 +560,16 @@ def api(request):
     try:
         
         import datetime
+
+        if text.startswith('https://mudvfinal.eu-gb.cf.appdomain.cloud/'):
+            import datetime
+            mydict = {
+                "query" : text,
+                "malware" : False,
+                "datetime" : str(datetime.datetime.now())
+            }
+            response = JsonResponse(mydict)
+            return response   
 
         if text.startswith('https://www.google.com/search?q='):
             import datetime

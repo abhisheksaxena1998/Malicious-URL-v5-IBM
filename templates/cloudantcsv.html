@@ -1,57 +1,26 @@
 {% extends 'index.html' %}
-{% block title %}Cloudant data{% endblock %}
+{% block title %}Dataset{% endblock %}
 {% block content %}
-</br></br>
-<table class="table">
-  <thead class="black white-text">
+<h2 class='mb-3'>Dataset collected from Chrome Extension (Blacklisting purpose)</h2>
+<table id="dtBasicExample" class="table" width="100%">
+  <thead>
     <tr>
-      <th class="th-sm">URL</th>
-      <th class="th-sm">Status</th>
-      <th class="th-sm">Domain</th>
-      <th class="th-sm">Organisation</th>
-      <th class="th-sm">Address</th>
-      <th class="th-sm">City</th>
-      <th class="th-sm">State</th>
-      <th class="th-sm">Zip Code</th>
-      <th class="th-sm">Country</th>
-      <th class="th-sm">Email</th>
-      <th class="th-sm">Alexa Rank</th>
-      <th class="th-sm">Registrar</th>
-      <th class="th-sm">Time</th>
+      <th>URL</th>
+      <th>Status</th>
+      <th>Domain</th>
+      <th>Organisation</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th>Country</th>
+      <th>Email</th>
+      <th>Alexa Rank</th>
+      <th>Registrar</th>
+      <th>Time</th>
     </tr>
   </thead>
- 
-  <tbody>
-    {% for value in stocklist%}
-    <thead class="white">
-    <tr>
-      <!--td>{{ value.0 }}</td-->
-      <!--td>{{ value.1 }}</td-->
-      <!--td>{{ value.2 }}</td-->
-      <td>{{ value.3 }}</td><!--URL-->
-      <td>{{ value.4 }}</td><!--Status-->
-      <td>{{ value.5 }}</td><!--Domain-->
-      <td>{{ value.6 }}</td><!--Organisation-->
-      
-
-      <td>{{ value.7 }}</td>
-      <td>{{ value.8 }}</td>
-      <td>{{ value.9 }}</td>
-      <td>{{ value.10 }}</td>
-      <td>{{ value.11 }}</td>
-
-
-
-      <td>{{ value.12 }}</td><!--Email-->
- 
-      <td>{{ value.14 }}</td><!--Rank-->
-      <td>{{ value.15 }}</td><!--Registrar-->
-      <td>{{ value.16 }}</td--><!--Time-->
-    </tr>
-  </thead>
-    {% endfor %}
-
-
-
-
-{% endblock %}  <!--/.Navbar-->
+  
+  
+</table>
+{% endblock %}    
