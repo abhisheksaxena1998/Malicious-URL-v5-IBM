@@ -356,7 +356,9 @@ def result(request):
                 print (iplongitude)
 '''
 
-
+                if text.startswith('https://mudvfinal.eu-gb.cf.appdomain.cloud/'):
+                    mal=True
+                    te="Legitimate"
 
                 obj = Url()
                 obj.result = te 
@@ -419,7 +421,10 @@ def result(request):
                 #print(city)
                 import datetime
 
-
+                if text.startswith('https://mudvfinal.eu-gb.cf.appdomain.cloud/'):
+                    mal=True
+                    te="Legitimate"
+            
 
 
 
@@ -472,11 +477,11 @@ def result(request):
                     #username="5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix"
                     #password="efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508"
                     #url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud"
-                client = Cloudant("5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix", "efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508", url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud")
+                client = Cloudant("6656429c-2491-40a6-b026-31dd597c43de-bluemix", "3847820cff823b729fdc0863eeac335529dc19ccab353aa401f6de6b57c38e57", url="https://6656429c-2491-40a6-b026-31dd597c43de-bluemix:3847820cff823b729fdc0863eeac335529dc19ccab353aa401f6de6b57c38e57@6656429c-2491-40a6-b026-31dd597c43de-bluemix.cloudantnosqldb.appdomain.cloud")
 
                 client.connect()
                     #created database name "URL"
-                database_name = "url"
+                database_name = "url_history"
                 my_database = client.create_database(database_name)
                     #check connection between cloudant and application
                 if my_database.exists():
@@ -504,28 +509,7 @@ def result(request):
                     
                 new_document = my_database.create_document(json_document)
                 ##csv read                
-                if new_document.exists():
-                    import csv
-                    with open("static/cloudant_count2.csv", "r") as f:
-                        for row in f:
-                            cot=int(row)
-                    cot=cot+1
-                    print(cot)
-                ##csv write
-                    file = open('static/cloudant_count2.csv','w')
-                    file.write(str(cot))
-                    file.close()
-                    print(f"successfully created.")
-                else:
-                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
-                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
-                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
-                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
-                    print("Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   Cloudant result push error   ")
-
-                    print("URl: ",text)
-                    print("Organisation: ",url_organisations)
-
+                
                 if text.startswith('https://mudvfinal.eu-gb.cf.appdomain.cloud/'):
                     mal=True
             

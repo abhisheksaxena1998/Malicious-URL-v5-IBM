@@ -4,9 +4,9 @@ def html():
     from cloudant.error import CloudantException
     from cloudant.result import Result, ResultByKey
     import time as t
-    client = Cloudant("5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix", "efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508", url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud")
+    client = Cloudant("6656429c-2491-40a6-b026-31dd597c43de-bluemix", "3847820cff823b729fdc0863eeac335529dc19ccab353aa401f6de6b57c38e57", url="https://6656429c-2491-40a6-b026-31dd597c43de-bluemix:3847820cff823b729fdc0863eeac335529dc19ccab353aa401f6de6b57c38e57@6656429c-2491-40a6-b026-31dd597c43de-bluemix.cloudantnosqldb.appdomain.cloud")
     client.connect()
-    my_database = client.create_database("url")
+    my_database = client.create_database("url_history")
     #dtt=[]
     result_collection = Result(my_database.all_docs, include_docs=True)
     liss=['URL','Property','Domain','Registrar','Organisation','Alexa Rank','Address','City','State','Zipcode','Country','E-mails','time']
@@ -153,11 +153,18 @@ def html():
     #     t.sleep(0.0001)
     ii=0
     import csv
-    with open("static/cloudant_count2.csv", "r") as f:
-        for row in f:
-            cot=int(row)
-    cott=cot-2000
-    res=result_collection[cott:]
+    import pandas as pd
+    import numpy as np
+    df=pd.read_csv("static/dataset.csv")
+    cot=len(df)
+    print ("Length",cot)
+    if cot>2000:
+      cott=cot-2000
+      res=result_collection[cott:]
+
+    else:
+      cott=cot
+      res=result_collection[0:]
     for result in res:
         ii=ii+1
         html_p=html_p+"<tr>"
