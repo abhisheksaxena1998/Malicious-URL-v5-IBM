@@ -42,7 +42,7 @@ def html():
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
-  <link rel="icon" href="{%static '46-512.png' %}" type="image/png">
+  <link rel="icon" href="/static/46-512.png" type="image/png">
   <title>{% block title %}Malicious URL Detector{% endblock %}</title>
 
     </head>
@@ -73,31 +73,31 @@ def html():
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'geturlhistory' %}">URL History Database</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/geturlhistory">URL History Database</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'fetchanalysis' %}">Live Data Analysis</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/fetchanalysis">Live Data Analysis</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'testresults' %}">Test Results</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/testresults">Test Results</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'getuserfeedbackform' %}">User FeedBack</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/getuserfeedbackform">User FeedBack</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'discuss' %}">Discuss Channel</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/discuss">Discuss Channel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'getdataset' %}">Download Dataset(URL History)</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/getdataset">Download Dataset(URL History)</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'cloudantcsv' %}">CloudantDataset</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/cloudantcsv">CloudantDataset</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About Application</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/about">About Application</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% static 'chrome-ext.zip' %}" download>Download Chrome Extension</a>
+          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/static/chrome-ext.zip" download>Download Chrome Extension</a>
         </li>
       </ul>
       <!-- Links -->
