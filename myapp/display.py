@@ -110,15 +110,7 @@ def html():
 </br>
 </br>
 </br>
-<script>
-                    Swal.fire(
-                    'Most recent 2000 URLs from Cloudant Database',
-                    'Loaded successfully!',
-                    'success'
-                             )
 
-                            
-                 </script>
     <h2 class='mb-3' style="text-align:center;color:black">Dataset (Blacklisting purpose accumulated with Chrome Extension)</h2>
     <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin-right: 25%;
 margin-left: 25%;
@@ -201,6 +193,15 @@ margin-top: 2%;">
 
     html_p=html_p+"""</tbody></table></br></br>
     <!-- End your project here-->
+    <script>
+                    Swal.fire(
+                    'Most recent 2000 URLs from Cloudant Database',
+                    'Loaded successfully!',
+                    'success'
+                             )
+
+                            
+                 </script>
     <div class="container-fluid">
       <!-- Footer -->
       <footer class="page-footer font-small blue fixed-bottom">

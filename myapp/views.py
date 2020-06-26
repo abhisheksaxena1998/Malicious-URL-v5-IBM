@@ -12,9 +12,11 @@ from .models import *
 # Create your views here.
 
 def cloudantcsv(request):
-    from myapp.display import html
-    return HttpResponse(html())
-
+    try:
+        from myapp.display import html
+        return HttpResponse(html())
+    except:
+        return render(request,'reload.html') 
 
 
 def error_404_view(request, exception):
