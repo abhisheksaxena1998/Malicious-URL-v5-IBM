@@ -110,7 +110,24 @@ def html():
 </br>
 </br>
 </br>
-    <h2 class='mb-3' style="text-align:center;color:blue">Dataset (Blacklisting purpose)</h2>
+<script>
+                    Swal.fire(
+                    'Most recent 2000 URLs from Cloudant Database',
+                    'Loaded successfully!',
+                    'success'
+                             )
+
+                            
+                 </script>
+    <h2 class='mb-3' style="text-align:center;color:black">Dataset (Blacklisting purpose accumulated with Chrome Extension)</h2>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin-right: 25%;
+margin-left: 25%;
+margin-top: 2%;">
+                <strong>Recent 2000 URLs are shown</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
     <table id="dtBasicExample" class="table" width="100%" >
     
     <thead>
@@ -152,12 +169,9 @@ def html():
     #     dtt.append(a)
     #     t.sleep(0.0001)
     ii=0
-    import csv
-    import pandas as pd
-    import numpy as np
-    df=pd.read_csv("static/dataset.csv")
-    cot=len(df)
-    print ("Length",cot)
+    res=result_collection[:]
+    cot=len(res)
+    #print ("Length",cot)
     if cot>2000:
       cott=cot-2000
       res=result_collection[cott:]
