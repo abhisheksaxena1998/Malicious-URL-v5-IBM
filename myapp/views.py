@@ -70,6 +70,32 @@ import datetime
 
 def result(request):
     text=request.GET['url'].lower().strip()
+
+    import requests
+    from lxml import etree
+    try:
+        temporary=requests.get(text).status_code
+    except:
+        temporary=404    
+    if temporary==200:
+        online_stat="Website is currently ONLINE" 
+        try:
+            from StringIO import StringIO
+        except:
+            from io import StringIO   
+
+        parser=etree.HTMLParser()
+        html=requests.get(text).text
+        tree=etree.parse(StringIO(html),parser)
+        title=tree.xpath("//title/text()")
+        tittle=title
+
+
+    else:
+        online_stat="Website is currently OFFLINE"    
+        tittle="Not determined as URL is OFFLINE"
+
+    print (online_stat,tittle)    
     try:
         
         #nm=request.GET['url']
@@ -411,7 +437,7 @@ def result(request):
                 if emails!=None:
                     emails="".join(emails)
                 if org!=None:    
-                    org=org.replace(",","")
+                    org=str(org).replace(",","")
                 #print (org)
                 '''print (dom)'''
                 dom="".join(dom)
@@ -522,7 +548,7 @@ def result(request):
                         'state':state,
                         'ziip':ziip,
                         'country':country,'emails':em,
-                        'dom':d,'rank':rank,'registrar':registrar,"tags":tags,"var13":var13,"varab":varab,"var11":var11,"var10":var10,"var5":var5,"var4":var4,"var3":var3,"ipadd":ipadd,'ipcity':ipcity,'ipstate':ipstate,'ipcountry':ipcountry,'iplatitude':iplatitude,'iplongitude':iplongitude})
+                        'dom':d,'rank':rank,'registrar':registrar,"tags":tags,"var13":var13,"varab":varab,"var11":var11,"var10":var10,"var5":var5,"var4":var4,"var3":var3,"ipadd":ipadd,'ipcity':ipcity,'ipstate':ipstate,'ipcountry':ipcountry,'iplatitude':iplatitude,'iplongitude':iplongitude,'online_stat':online_stat,'tittle':tittle})
 
 
 
