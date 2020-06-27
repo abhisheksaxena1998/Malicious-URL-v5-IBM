@@ -8,7 +8,7 @@ def html():
     client.connect()
     my_database = client.create_database("url_history")
     #dtt=[]
-    result_collection = Result(my_database.all_docs, include_docs=True)
+    result_collection = Result(my_database.all_docs, descending=True,include_docs=True)
     liss=['URL','Property','Domain','Registrar','Organisation','Alexa Rank','Address','City','State','Zipcode','Country','E-mails','time']
     
     
