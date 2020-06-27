@@ -92,8 +92,8 @@ def result(request):
 
 
     else:
-        online_stat="Website is currently OFFLINE"    
-        tittle="Not determined as URL is OFFLINE"
+        online_stat="Website is currently OFFLINE or temporarily overloaded"    
+        tittle="Not determined as URL is OFFLINE or temporarily overloaded"
 
     print (online_stat,tittle)    
     try:
