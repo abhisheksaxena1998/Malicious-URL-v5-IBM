@@ -115,7 +115,7 @@ def html():
     <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin-right: 25%;
 margin-left: 25%;
 margin-top: 2%;">
-                <strong>Recent 2000 URLs are shown</strong>
+                <strong>Recent 1000 URLs are shown</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -164,8 +164,8 @@ margin-top: 2%;">
     res=result_collection[:]
     cot=len(res)
     #print ("Length",cot)
-    if cot>2000:
-      cott=cot-2000
+    if cot>1000:
+      cott=cot-1000
       res=result_collection[cott:]
 
     else:
@@ -195,7 +195,7 @@ margin-top: 2%;">
     <!-- End your project here-->
     <script>
                     Swal.fire(
-                    'Most recent 2000 URLs from Cloudant Database',
+                    'Most recent 1000 URLs from Cloudant Database',
                     'Loaded successfully!',
                     'success'
                              )
