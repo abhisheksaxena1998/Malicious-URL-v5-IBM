@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+{% block title %}Sandbox{% endblock %}
+{% block content %}
+
+</br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8" style="margin: 2rem auto 0 auto;">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
+                <strong>Sandbox is loaded !</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="container-fluid" style="margin-bottom: -50px;" >
+                <div class="row">
+                    <div class="col-md-6" style="margin: 1rem auto 5rem auto;">
+                        <!-- Card -->
+                        <div class="card">
+
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                <img class="card-img-top" src="/static/cyber.gif" alt="Card image cap">
+                                <a href="#!">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="{%  url 'sandboxresult'  %}" autocomplete="off">
+    <div class="container-fluid" style="margin-top: 1rem;">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Section -->
+          <section>
+  
+            <i class="fad fa-sack-dollar"
+              style="margin:0 auto;display: block;text-align: center;font-size: 6rem;color:red"></i>
+  
+            <!--First row-->
+            <div class="row d-flex justify-content-center">
+  
+  
+              <div class="col-md-12 col-lg-12 mb-4">
+  
+                <!-- Material outline input -->            
+          
+            <div class="container">
+              <input type="text" name="url" class="form-control form-control-lg" name="url" placeholder="Enter suspected URL in valid format like 'https://www.google.com' to view details in Sandbox " style="border: groove;" required>
+            </div>
+  
+              </div>
+  
+              <div class="col-md-12 col-lg-12 mb-4">
+  
+                <button type="submit" class="btn btn-danger btn-rounded" style="display: block;margin: 0 auto;">Initiate Sandbox</button>
+  
+              </div>
+  
+            </div>
+            <!--First row-->
+  
+          </section>
+          <!-- Section -->
+        </div>
+        </form>
+    
+
+
+
+{% endblock %}

@@ -11,6 +11,143 @@ from .models import *
 
 # Create your views here.
 
+def test(request):
+    return render(request,'test.html')
+
+def sandbox(request):
+    return render(request,'sandbox.html') 
+
+
+def sandboxresult(request):
+    import requests
+    from bs4 import BeautifulSoup
+    text=request.GET['url'].lower().strip()
+
+    response = requests.get(text)
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    for s in soup.select('script'):
+        s.extract()
+    html =soup.contents
+    html =soup.prettify("utf-8")
+    with open("templates/test.html", "wb") as file:
+        file.write(html)
+
+    #page description
+    def get_description(html):
+        description = None
+        if html.find("meta", property="description"):
+            description = html.find("meta", property="description").get('content')
+        elif html.find("meta", property="og:description"):
+            description = html.find("meta", property="og:description").get('content')
+        elif html.find("meta", property="twitter:description"):
+            description = html.find("meta", property="twitter:description").get('content')
+        elif html.find("p"):
+            description = html.find("p").contents
+        return description
+
+    #page title
+    def get_title(html):
+        title = None
+        if html.title.string:
+            title = html.title.string
+        elif html.find("meta", property="og:title"):
+            title = html.find("meta", property="og:title").get('content')
+        elif html.find("meta", property="twitter:title"):
+            title = html.find("meta", property="twitter:title").get('content')
+        elif html.find("h1"):
+            title = html.find("h1").string
+        return title
+
+    #website name
+    def get_site_name(html, url):
+        if html.find("meta", property="og:site_name"):
+            site_name = html.find("meta", property="og:site_name").get('content')
+        elif html.find("meta", property='twitter:title'):
+            site_name = html.find("meta", property="twitter:title").get('content')
+        else:
+            site_name = url.split('//')[1]
+            return site_name.split('/')[0].rsplit('.')[1].capitalize()
+        return site_name
+
+    #found Privacy Policy
+    def get_privacypolicy(html):
+        if(html.find('Privacy Policy')!=-1) or (html.find('Privacy policy')!=-1) :
+            return True
+        else:
+            return False
+
+    #found TOS
+    def get_TermsOfService(html):
+        if(html.find('Terms of Service')!=-1) or (html.find('Terms of service')!=-1) or (html.find('Terms Of Service')!=-1) or (html.find('Service Terms')!=-1):
+            return True
+        else:
+            return False
+
+    #Found copyright
+    def get_Copyright(html):
+        if(html.find('Copyright Policy')!=-1) or (html.find('Copyright policy')!=-1):
+            return True
+        else:
+            return False
+
+    def get_allDetails(html,url):
+        if(get_site_name(html,url)!=-1):
+            print("Website name: ",get_site_name(html,url))
+        if(get_title(html)!=-1):
+            print("Page title: ",get_title(html))
+        if(get_description(html)!=-1):
+            print("website Description: ",get_description(html))
+        if(get_privacypolicy(html)!=-1):
+            print("Found Privacy Policy: ",get_privacypolicy(html))
+        if(get_TermsOfService(html)!=-1):
+            print("Found Terms_Of_services: ",get_TermsOfService(html))
+        if(get_Copyright(html)!=-1):
+            print("Found copyright: ",get_Copyright(html))
+
+    try:
+        response = requests.get(text)
+        html = BeautifulSoup(response.content, "html.parser")
+    except:
+        print ("Details not found")    
+
+    #get_allDetails(html,text)    
+
+    try:
+        websitename=get_site_name(html,text)
+    except:
+        websitename="Can't determine"    
+    try:
+        pagetitle=get_title(html)
+    except:
+        pagetitle="Can't determine"  
+    try:      
+        websitedescription=get_description(html)
+    except:
+        websitedescription="Can't determine"    
+    try:    
+        foundprivacypolicy=get_privacypolicy(html)
+    except:
+        foundprivacypolicy="Can't determine" 
+    try:       
+        foundtermsofservices=get_TermsOfService(html)
+    except:
+        foundtermsofservices="Can't determine"    
+    try:    
+        foundcopyright=get_Copyright(html)
+    except:
+        foundcopyright="Can't determine"    
+    response=requests.get(f"https://mudvfinal.eu-gb.cf.appdomain.cloud/api?query={text}")    
+    json_data = json.loads(response.text)
+    result=json_data['malware']
+    if result==True:
+        var="This website is a phishing website"
+    else:
+        var="This website is a legitimate website"    
+
+    return render(request,'sandboxresult.html',{'pagetitle':pagetitle,'websitename':websitename,'websitedescription':websitedescription,'foundprivacypolicy':foundprivacypolicy,'foundtermsofservices':foundtermsofservices,'foundcopyright':foundcopyright,'text':text,'var':var}) 
+
+
 def cloudantcsv(request):
     try:
         from myapp.display import html
@@ -95,9 +232,9 @@ def result(request):
         online_stat="Website is currently OFFLINE or temporarily overloaded"    
         tittle="Not determined as URL is OFFLINE or temporarily overloaded"
 
-    print (online_stat,tittle)    
+    #print (online_stat,tittle)    
     try:
-        
+    
         #nm=request.GET['url']
         import tldextract
         do=tldextract.extract(text).domain
@@ -185,13 +322,13 @@ def result(request):
                 #code replaced whois
                 # 
                 """try:"""
-                d=-1
+                d=0
                 try:
                     res=whois.whois(url)
                     cpyres=res
                 except:
                     print("getaddrerrror DNE")
-                    d=0
+                    d=-1
                     name="Not found in WHOIS database"
                     org="Not found in WHOIS database"
                     add="Not found in WHOIS database"
@@ -202,7 +339,7 @@ def result(request):
                     emails="Not found in WHOIS database"
                     dom="Not Found in WHOIS database"
                     registrar="Not Found in WHOIS database"
-                if d!=0:    
+                if d!=-1:    
                     try:
                         if len(res.creation_date)>1:
                             a=res['creation_date'][0]
@@ -278,10 +415,10 @@ def result(request):
                 #print (arg[0])
                 import whois
                 url=text
-                
+                print (d)
                 #print (res)
                 #res=whois.whois(url)
-                if (d!=0):
+                if (d!=-1):
                     name=res.domain_name
                     #print (res.domain_name)
                     org=res.org
@@ -382,7 +519,7 @@ def result(request):
                 print (ipcountry)
                 print (iplatitude)
                 print (iplongitude)
-'''
+    '''
 
                 if text.startswith('https://mudvfinal.eu-gb.cf.appdomain.cloud/'):
                     mal=True
@@ -661,12 +798,12 @@ def api(request):
 
                 url=text
 
-                d=-1
+                d=0
                 try:
                     res=whois.whois(url)
                 except:
                     #print("getaddrerrror DNE")
-                    d=0
+                    d=-1
                     name="Not found in database"
                     org="Not found in database"
                     add="Not found in database"
@@ -676,7 +813,7 @@ def api(request):
                     country="Not found in database"
                     emails="Not found in database"
                     dom="Not Found"
-                if d!=0:    
+                if d!=-1:    
                     try:
                         if len(res.creation_date)>1:
                             a=res['creation_date'][0]
@@ -748,7 +885,7 @@ def api(request):
                 url=text
                 
                 #print (res)
-                if (d!=0):
+                if (d!=-1):
                     name=res.domain_name
                     #print (res.domain_name)
                     org=res.org
