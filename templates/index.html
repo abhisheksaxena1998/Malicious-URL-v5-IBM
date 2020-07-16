@@ -88,6 +88,9 @@ background-attachment: fixed;background-size: cover;"></div>
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'casestudy' %}">Cyberfraud CaseStudy</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% static 'chrome-ext.zip' %}" download>Chrome Extension</a>
         </li>
       </ul>
@@ -194,7 +197,7 @@ background-attachment: fixed;background-size: cover;"></div>
       <script type="text/javascript">
         $(document).ready(function () {
             //Preloader
-            preloaderFadeOutTime = 500;
+            preloaderFadeOutTime = 1250;
             function hidePreloader() {
                 var preloader1 = $('.spinner-border');
                 var preloader2 = $('#card');

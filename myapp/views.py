@@ -11,12 +11,15 @@ from .models import *
 
 # Create your views here.
 
+
 def test(request):
     return render(request,'test.html')
 
 def sandbox(request):
     return render(request,'sandbox.html') 
 
+def casestudy(request):
+    return render(request,'casestudy.html')
 
 def sandboxresult(request):
     try:

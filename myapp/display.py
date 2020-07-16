@@ -100,6 +100,9 @@ def html():
           <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/about">About</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/casestudy">Cyberfraud CaseStudy</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/static/chrome-ext.zip" download>Chrome Extension</a>
         </li>
       </ul>
