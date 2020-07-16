@@ -73,31 +73,34 @@ def html():
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/geturlhistory">URL History Database</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/geturlhistory">URL History</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/fetchanalysis">Live Data Analysis</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/fetchanalysis">Live Data Analysis</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/testresults">Test Results</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/sandbox">Sandbox</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/getuserfeedbackform">User FeedBack</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/testresults">Test Results</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/discuss">Discuss Channel</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/getuserfeedbackform">User FeedBack</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/getdataset">Download Dataset(URL History)</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/discuss">Discuss Channel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/cloudantcsv">CloudantDataset</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/getdataset">Dataset(URL History)</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/about">About Application</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/cloudantcsv">Cloudant Dataset</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mudvfinal.eu-gb.cf.appdomain.cloud/static/chrome-ext.zip" download>Download Chrome Extension</a>
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://mudvfinalradar.eu-gb.cf.appdomain.cloud/static/chrome-ext.zip" download>Chrome Extension</a>
         </li>
       </ul>
       <!-- Links -->
