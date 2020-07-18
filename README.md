@@ -1,9 +1,9 @@
 # Malicious-Urlv5
 Malicious-Urlv5
 
-This application is live at : https://mudvfinal.eu-gb.cf.appdomain.cloud/
+This application is live at : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
 
-Live Data Analysis Portal : https://mudvfinal.eu-gb.cf.appdomain.cloud/fetchanalysis
+Live Data Analysis Portal : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/fetchanalysis
 
 Chrome Extension repository : https://github.com/abhisheksaxena1998/ChromeExtension-Malicious-URL-v5-IBM
 
