@@ -58,12 +58,15 @@ https://www.freepik.com/free-vector | Legitimate
 ### Link to Malicious URL Detector Anti-Phishing solution https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
 
 1.	Type a valid URL for example to fetch analysis:
-
-    https://www.mi.com
-
-    This is an example of Legitimate URL.
     
-    ![How to install](/Images/img7.png)
+    https://www2.deloitte.com/in/en.html
+    
+    ![How to install](/Images/img9.png)
+    
+    ![How to install](/Images/img91.png)
+    
+    ![How to install](/Images/img92.png)
+    
     
 2.	Another example of Legitimate URL
 
@@ -71,23 +74,41 @@ https://www.freepik.com/free-vector | Legitimate
     
     ![How to install](/Images/img8.png)
     
+    ![How to install](/Images/img81.png)
+    
+    ![How to install](/Images/img82.png)
+    
 3.	Another Legitimate URL
 
-    https://www2.deloitte.com/in/en.html
+    https://www.mi.com
+
+    This is an example of Legitimate URL.
     
-    ![How to install](/Images/img9.png)
+    ![How to install](/Images/img7.png)
+    
+    ![How to install](/Images/img71.png)
+    
+    ![How to install](/Images/img72.png)
     
 4.	Example of Malicious Website
 
-    http://www.dhilloncraneservice.com/.well-known/bankofamerica.com/
+    https://promo-twitter.info
     
     ![How to install](/Images/img10.png)
+    
+    ![How to install](/Images/img101.png)
+    
+    ![How to install](/Images/img102.png)
     
 5.	Another Malicious URL
 
     https://home-paypal-jp.moonkahonda.com/panel_JP/-/jp/xppl/
     
     ![How to install](/Images/img11.png)
+    
+    ![How to install](/Images/img111.png)
+    
+    ![How to install](/Images/img112.png)
     
     
     
