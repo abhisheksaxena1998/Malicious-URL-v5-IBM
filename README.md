@@ -33,7 +33,7 @@ https://www.freepik.com/free-vector | Legitimate
 ### Link to Malicious URL Detector Anti-Phishing solution:
 https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
 
-######## Note : While using Malicious URL Detector web application on a browser protected by Malicious URL Detector browser extension, the application might take sometime to load, as the REST API endpoint is called through JavaScript in Chrome Extension at this point of time Cloudant database is updated too, since we are using LITE plan of Cloudant Database there are limited writes available. If these requests exceed number of writes availabe for robust functioning of application these are queued, which leads to slowness. 
+    Note : While using Malicious URL Detector web application on a browser protected by Malicious URL Detector browser extension, the application might take sometime to load, as the REST API endpoint is called through JavaScript in Chrome Extension at this point of time Cloudant database is updated too, since we are using LITE plan of Cloudant Database there are limited writes available. If these requests exceed number of writes availabe for robust functioning of application these are queued, which leads to slowness. 
 
 1.	Type a valid URL for example to fetch analysis:
     
