@@ -18,7 +18,7 @@ On July 15, 2020, between 20:00 and 22:00 UTC, around 130 high-profile Twitter a
 
 Compromised accounts included those of well-known individuals such as <strong>Barack Obama, Joe Biden, Bill Gates, Jeff Bezos, MrBeast, Michael Bloomberg, Warren Buffett, Floyd Mayweather, Kim Kardashian, and Kanye West; and companies such as Apple, Uber, and Cash App</strong>.
 
-### Link to implemented detailed Case Study : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/casestudy
+### Link to implemented detailed Case Study: https://mudvfinalradar.eu-gb.cf.appdomain.cloud/casestudy
 
 # Test Data
 
