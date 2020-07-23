@@ -1,15 +1,14 @@
-# Malicious-Urlv5
-Malicious-Urlv5
+# Malicious-URL-Detector
 
-This application is live at : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
+1. This application is live at : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
 
-Live Data Analysis Portal : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/fetchanalysis
+2. Live Data Analysis Portal : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/fetchanalysis
 
-Chrome Extension repository : https://github.com/abhisheksaxena1998/ChromeExtension-Malicious-URL-v5-IBM
+3. Chrome Extension repository : https://github.com/abhisheksaxena1998/ChromeExtension-Malicious-URL-v5-IBM
 
-Dataset link : https://github.com/Hritiksum/MUD_dataset
+4. Dataset link : https://github.com/Hritiksum/MUD_dataset
 
-Training and Testing link : https://github.com/Hritiksum/MUD_dataset/blob/master/Training%20and%20Testing%20Model/Training%20and%20Testing.ipynb
+5. Training and Testing link : https://github.com/Hritiksum/MUD_dataset/blob/master/Training%20and%20Testing%20Model/Training%20and%20Testing.ipynb
 
 Life is dependent mainly on internet in todays life for moving business online, or making online transactions. Resulting in cyber-thefts and cyber-frauds increasing exponentially day by day, leading to compromised security and infiltration of hackers or third parties while transacting online.
 
@@ -29,34 +28,6 @@ https://www.google.com/ | Legitimate
 https://wallpapersite.com/abstract/ | Legitimate
 https://www.freepik.com/free-vector | Legitimate
 
-
-## Installation Guide
-
-1.	Extract Malicious-Urlv5 zip file.
-2.	Inside Malicious-Urlv5 there is a file requirements.txt
-3.	Open command prompt in Malicious-Urlv5 folder
-
-    ![How to install](/Images/img1.png)
-
-4.  Type following command in cmd
-
-    ![How to install](/Images/img2.png)
-    
-5.  Dependencies will start installing.  
-
-    ![How to install](/Images/img3.png)
-    ![How to install](/Images/img4.png)
-
-6.	To run the code, write following command in terminal.
-
-    python manage.py runserver
-    
-    ![How to install](/Images/img5.png)
-    
-7.	Type http://127.0.0.1:8000/ in URL bar of browser and press Enter. Machine Learning powered Web                 Application will start.    
-
-    ![How to install](/Images/img6.png)
-    
 ## This project is deployed on IBM Cloud Foundry
 
 ### Link to Malicious URL Detector Anti-Phishing solution https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
@@ -113,12 +84,31 @@ https://www.freepik.com/free-vector | Legitimate
     ![How to install](/Images/img111.png)
     
     ![How to install](/Images/img112.png)
+
+## Installation Guide
+
+1.	Extract Malicious-Urlv5 zip file.
+2.	Inside Malicious-Urlv5 there is a file requirements.txt
+3.	Open command prompt in Malicious-Urlv5 folder
+
+    ![How to install](/Images/img1.png)
+
+4.  Type following command in cmd
+
+    ![How to install](/Images/img2.png)
     
+5.  Dependencies will start installing.  
+
+    ![How to install](/Images/img3.png)
+    ![How to install](/Images/img4.png)
+
+6.	To run the code, write following command in terminal.
+
+    python manage.py runserver
     
+    ![How to install](/Images/img5.png)
     
+7.	Type http://127.0.0.1:8000/ in URL bar of browser and press Enter. Machine Learning powered Web                 Application will start.    
+
+    ![How to install](/Images/img6.png)
     
-    
-    
-    
-    
-  
