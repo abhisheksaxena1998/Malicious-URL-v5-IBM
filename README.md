@@ -11,15 +11,15 @@
 5. Training and Testing link : https://github.com/Hritiksum/MUD_dataset/blob/master/Training%20and%20Testing%20Model/Training%20and%20Testing.ipynb
 
 Life is dependent mainly on internet in todays life for moving business online, or making online transactions. Resulting in cyber-thefts and cyber-frauds increasing exponentially day by day, leading to compromised security and infiltration of hackers or third parties while transacting online.
-
+*******
 ## Notable Results: Twitter Bitcoin Scam (Detected successfully by our Data Science/Machine Learning solution – Malicious URL Detector.)
 
 On July 15, 2020, between 20:00 and 22:00 UTC, around 130 high-profile Twitter accounts were compromised by outside parties to promote a bitcoin scam. Twitter and other media sources confirmed that the perpetrators had gained access to Twitter's administrative tools so that they could alter the accounts themselves and post the tweets directly. They appeared to have used social engineering to gain access to the tools via Twitter employees.
 
 Compromised accounts included those of well-known individuals such as <strong>Barack Obama, Joe Biden, Bill Gates, Jeff Bezos, MrBeast, Michael Bloomberg, Warren Buffett, Floyd Mayweather, Kim Kardashian, and Kanye West; and companies such as Apple, Uber, and Cash App</strong>.
-
+*******
 ### Link to implemented detailed Case Study: https://mudvfinalradar.eu-gb.cf.appdomain.cloud/casestudy
-
+*******
 # Test Data
 
 Test URL | Result (Target)
@@ -41,7 +41,7 @@ https://www.freepik.com/free-vector | Legitimate
 ### Link to Malicious URL Detector Anti-Phishing solution:
 https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
 
-    Note : While using Malicious URL Detector web application on a browser protected by Malicious URL Detector browser extension, the application might take sometime to load, as the REST API endpoint is called through JavaScript in Chrome Extension and at this instant Cloudant database is updated too, since we are using LITE plan of Cloudant Database there are limited writes available. If these requests exceed number of writes availabe for robust functioning of application these are queued, which leads to slowness. 
+    Note : While using Malicious URL Detector web application on a browser protected by Malicious URL Detector browser extension, the web application might take sometime to load, as the REST API endpoint is called through JavaScript in Chrome Extension and at this instant Cloudant database is updated too, since we are using LITE plan of Cloudant Database there are limited writes available. If these requests exceed number of writes availabe for robust functioning of application these are queued, which leads to slowness. 
 
 1.	Type a valid URL for example to fetch analysis:
     
