@@ -628,12 +628,8 @@ def result(request):
                 from cloudant.error import CloudantException
                 from cloudant.result import Result, ResultByKey
                     
-                    #build connection using cloudant username,password and url
-                    #----------connection details------------#
-                    #username="5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix"
-                    #password="efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508"
-                    #url="https://5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix:efe6af61c9872c02b29eb078f9ac872e5fcf41afaa1333bdef1f8ff88d9de508@5e42a7d0-ea17-4a3a-bbbf-2cd472931bd0-bluemix.cloudantnosqldb.appdomain.cloud"
-                client = Cloudant("6656429c-2491-40a6-b026-31dd597c43de-bluemix", "3847820cff823b729fdc0863eeac335529dc19ccab353aa401f6de6b57c38e57", url="https://6656429c-2491-40a6-b026-31dd597c43de-bluemix:3847820cff823b729fdc0863eeac335529dc19ccab353aa401f6de6b57c38e57@6656429c-2491-40a6-b026-31dd597c43de-bluemix.cloudantnosqldb.appdomain.cloud")
+                  
+                client = Cloudant("username", "key", url="key")
 
                 client.connect()
                     #created database name "URL"
