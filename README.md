@@ -3,7 +3,7 @@
 [![Concept Video](https://img.youtube.com/vi/-6fd996HWrQ/0.jpg)](https://www.youtube.com/watch?v=-6fd996HWrQ)
 
 
-** YouTube demo link : https://youtu.be/-6fd996HWrQ
+**YouTube demo link** : https://youtu.be/-6fd996HWrQ
 
 1. This application is live at : https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
 
@@ -49,17 +49,6 @@ https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
     Note : While using Malicious URL Detector web application on a browser protected by Malicious URL Detector browser extension, the web application might take sometime to load, as the REST API endpoint is called through JavaScript in Chrome Extension and at this instant Cloudant database is updated too, since we are using LITE plan of Cloudant Database there are limited writes available. If these requests exceed number of writes availabe for robust functioning of application these are queued, which leads to slowness. 
 
 1.	Type a valid URL for example to fetch analysis:
-    
-    https://www2.deloitte.com/in/en.html
-    
-    ![How to install](/Images/img9.png)
-    
-    ![How to install](/Images/img91.png)
-    
-    ![How to install](/Images/img92.png)
-    
-    
-2.	Another example of Legitimate URL
 
     https://technoutsav.techgig.com/
     
@@ -69,7 +58,7 @@ https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
     
     ![How to install](/Images/img82.png)
     
-3.	Another Legitimate URL
+2.	Another Legitimate URL
 
     https://www.mi.com
 
@@ -81,7 +70,7 @@ https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
     
     ![How to install](/Images/img72.png)
     
-4.	Example of Malicious Website
+3.	Example of Malicious Website
 
     https://promo-twitter.info
     
@@ -91,7 +80,7 @@ https://mudvfinalradar.eu-gb.cf.appdomain.cloud/
     
     ![How to install](/Images/img102.png)
     
-5.	Another Malicious URL
+4.	Another Malicious URL
 
     https://home-paypal-jp.moonkahonda.com/panel_JP/-/jp/xppl/
     
